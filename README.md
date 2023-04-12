@@ -11,3 +11,24 @@ Des Weiteren möchte wir erwähnen, dass verwendete Artefakte und Abbildungen vo
 Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpflanzen durch Fotodokumentation und Erinnerungen an die Pflege langfristig gesund halten können. Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanzen vergessen oder gar vernachlässigt werden. Unsere App soll dabei helfen, dies zu vermeiden und den Benutzern dabei helfen, ihre Pflanzen erfolgreich zu pflegen, weshalb wir uns für den Namen "PlantSaver" _(engl. Pflanzen-Retter)_ entschieden haben, da er im Grunde genau das ausdrückt, was unsere App erzielen möchte: Pflanzen retten. 
 
 ### Wireframes zu PlantSaver
+
+**Opener**+
+
+<img width="318" alt="PlantSaver_Opener" src="https://user-images.githubusercontent.com/92301157/231328977-a3646ace-6aa7-4d2d-bbdd-d05f54026544.png">
+
+**Startseite**
+
+<img width="318" alt="PlantSaver_Startseite" src="https://user-images.githubusercontent.com/92301157/231329018-0936611e-24d5-439e-b235-a0dac12b3a61.png">
+
+**Log-In**
+
+<img width="318" alt="PlantSaver_LogIn" src="https://user-images.githubusercontent.com/92301157/231329139-2528a961-92f4-4e31-b7ed-68f238d54759.png">
+
+**Sign-Up**
+
+<img width="318" alt="PlantSaver_SignUp" src="https://user-images.githubusercontent.com/92301157/231329116-4cce2bf5-2c72-483b-a39e-aec227568d61.png">
+
+**PlantScanner**
+
+![Uploading PlantSaver_PlantScanner.png…]()
+
