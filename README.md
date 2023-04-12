@@ -28,6 +28,10 @@ Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpfl
 
 <img width="318" alt="PlantSaver_SignUp" src="https://user-images.githubusercontent.com/92301157/231329116-4cce2bf5-2c72-483b-a39e-aec227568d61.png">
 
+**UserPlants**
+
+![UserPlants](https://user-images.githubusercontent.com/92301157/231540053-b33c93b2-9deb-4884-aae8-3794306595cc.jpeg)
+
 **PlantScanner**
 
 <img width="319" alt="PlantScanner" src="https://user-images.githubusercontent.com/92301157/231330155-84f76881-a560-4dae-8800-b8fb1934dba6.png">
