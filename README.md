@@ -12,7 +12,7 @@ Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpfl
 
 ### Wireframes zu PlantSaver
 
-**Opener**+
+**Opener**
 
 <img width="318" alt="PlantSaver_Opener" src="https://user-images.githubusercontent.com/92301157/231328977-a3646ace-6aa7-4d2d-bbdd-d05f54026544.png">
 
@@ -30,5 +30,7 @@ Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpfl
 
 **PlantScanner**
 
-![Uploading PlantSaver_PlantScanner.png…]()
+<img width="319" alt="PlantScanner" src="https://user-images.githubusercontent.com/92301157/231330155-84f76881-a560-4dae-8800-b8fb1934dba6.png">
+
+
 
