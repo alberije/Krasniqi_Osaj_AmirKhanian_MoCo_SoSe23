@@ -30,7 +30,7 @@ Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpfl
 
 **UserPlants**
 
-![UserPlants](https://user-images.githubusercontent.com/92301157/231540408-0869cd2e-b542-4763-a6fd-5501a554f55a.png)
+![UserPlants](https://user-images.githubusercontent.com/92301157/231540841-21a38589-fe0f-455f-9bae-cca197ea5b7e.png)
 
 **PlantScanner**
 
