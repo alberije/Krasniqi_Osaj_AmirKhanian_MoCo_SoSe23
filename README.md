@@ -1,6 +1,6 @@
 ## Projektidee
 
-Im Rahmen des Mobile Computing _(kurz: MoCo)_ im Sommer-Semester 2023 haben wir, Nora Krasniqi, Losik Amir Khanian und Alberije Osaj, uns nach einem gemeinsamen Brainstorming-Session und einer entsprechenden Recherche dazu entschieden, eine Zimmerpflanzen-Applikation zu konzipieren und im späteren Verlauf des Moduls mithilfe der Implementierung zu realisieren. 
+Im Rahmen des Moduls Mobile Computing _(kurz: MoCo)_ im Sommer-Semester 2023 haben wir, Nora Krasniqi, Losik Amir Khanian und Alberije Osaj, uns nach einer gemeinsamen Brainstorming-Session und einer entsprechenden Recherche dazu entschieden, eine Zimmerpflanzen-Applikation zu konzipieren und im späteren Verlauf des Moduls mithilfe der Implementierung zu realisieren. 
 
 Der Projektverlauf wird ausschließlich in diesem Repository dokumentiert. Demnach befinden sich alle Materialen, sowie Artefakte des Projekts ebenfalls in dem Repository, welches gleichzeitig auch den Lernprozess und die Umsetzung der geforderten Bearbeitungsaufgaben festhält.
 
