@@ -8,7 +8,9 @@ Des Weiteren möchte wir erwähnen, dass verwendete Artefakte und Abbildungen vo
 
 ### PlantSaver
 
-Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpflanzen durch Fotodokumentation und Erinnerungen an die Pflege langfristig gesund halten können. Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanzen vergessen oder gar vernachlässigt werden. Unsere App soll dabei helfen, dies zu vermeiden und den Benutzern dabei helfen, ihre Pflanzen erfolgreich zu pflegen, weshalb wir uns für den Namen "PlantSaver" _(engl. Pflanzen-Retter)_ entschieden haben, da er im Grunde genau das ausdrückt, was unsere App erzielen möchte: Pflanzen retten. 
+Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpflanzen durch Fotodokumentation und Erinnerungen an die Pflege langfristig gesund halten können. Außerdem soll auch über eine externe API dem Nutzer die Möglichkeit geboten werden, Pflanzen-Fachmärkte in der Nähe lokalisieren zu können. 
+
+Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanzen vergessen oder gar vernachlässigt werden. Unsere App soll dabei helfen, dies zu vermeiden und den Benutzern dabei helfen, ihre Pflanzen erfolgreich zu pflegen, weshalb wir uns für den Namen "PlantSaver" _(engl. Pflanzen-Retter)_ entschieden haben, da er im Grunde genau das ausdrückt, was unsere App erzielen möchte: Pflanzen retten. 
 
 ### Wireframes zu PlantSaver
 
