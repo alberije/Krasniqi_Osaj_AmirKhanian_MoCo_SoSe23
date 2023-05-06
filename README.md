@@ -25,11 +25,11 @@ Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanz
 
 **User Plant-Collection**
 
-![PlantSaver_UserCollection](https://user-images.githubusercontent.com/92301157/236635094-5a7686db-d632-48fc-a168-792137406c59.png)
+![PlantSaver_UserCollection](https://user-images.githubusercontent.com/92301157/236644388-cbc35c74-96c9-4848-9933-eb75a0d4678a.png)
 
 **New Plant**
 
-![PlantSaver_NewPlant](https://user-images.githubusercontent.com/92301157/236635112-a31ba448-461c-44c7-af71-c4a0b45b80ed.png)
+![PlantSaver_NewPlant](https://user-images.githubusercontent.com/92301157/236644397-fc18cae9-5ae8-49b9-b590-b887f4330a8c.png)
 
 **Take Plant-Photo**
 
