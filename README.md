@@ -12,31 +12,28 @@ Unser Ziel ist es, eine Anwendung zu entwickeln, mit der Benutzer ihre Zimmerpfl
 
 Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanzen vergessen oder gar vernachlässigt werden. Unsere App soll dabei helfen, dies zu vermeiden und den Benutzern dabei helfen, ihre Pflanzen erfolgreich zu pflegen, weshalb wir uns für den Namen "PlantSaver" _(engl. Pflanzen-Retter)_ entschieden haben, da er im Grunde genau das ausdrückt, was unsere App erzielen möchte: Pflanzen retten. 
 
-### Wireframes zu PlantSaver
+### UI-Wireframes zu PlantSaver
 
 **Opener**
 
-<img width="318" alt="PlantSaver_Opener" src="https://user-images.githubusercontent.com/92301157/231328977-a3646ace-6aa7-4d2d-bbdd-d05f54026544.png">
+![PlantSaver_Opener](https://user-images.githubusercontent.com/92301157/236635074-864f74c7-c2e1-4d54-9e93-78a9b8489d20.png)
 
-**Startseite**
 
-<img width="318" alt="PlantSaver_Startseite" src="https://user-images.githubusercontent.com/92301157/231329018-0936611e-24d5-439e-b235-a0dac12b3a61.png">
+**Home**
 
-**Log-In**
+![PlantSaver_HelloName](https://user-images.githubusercontent.com/92301157/236635082-5e30e121-a94a-471b-8729-c7323cbac4be.png)
 
-<img width="318" alt="PlantSaver_LogIn" src="https://user-images.githubusercontent.com/92301157/231329139-2528a961-92f4-4e31-b7ed-68f238d54759.png">
+**User Plant-Collection**
 
-**Sign-Up**
+![PlantSaver_UserCollection](https://user-images.githubusercontent.com/92301157/236635094-5a7686db-d632-48fc-a168-792137406c59.png)
 
-<img width="318" alt="PlantSaver_SignUp" src="https://user-images.githubusercontent.com/92301157/231329116-4cce2bf5-2c72-483b-a39e-aec227568d61.png">
+**New Plant**
 
-**UserPlants**
+![PlantSaver_NewPlant](https://user-images.githubusercontent.com/92301157/236635112-a31ba448-461c-44c7-af71-c4a0b45b80ed.png)
 
-![UserPlants](https://user-images.githubusercontent.com/92301157/231540841-21a38589-fe0f-455f-9bae-cca197ea5b7e.png)
+**Take Plant-Photo**
 
-**PlantScanner**
-
-<img width="319" alt="PlantScanner" src="https://user-images.githubusercontent.com/92301157/231330155-84f76881-a560-4dae-8800-b8fb1934dba6.png">
+![PlantSaver_TakePlantPhoto](https://user-images.githubusercontent.com/92301157/236635127-8447a798-25a5-448e-b8eb-a0809c084079.png)
 
 
 
