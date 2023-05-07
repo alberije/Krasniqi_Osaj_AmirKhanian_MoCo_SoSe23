@@ -27,21 +27,13 @@ class opener : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color(0xFFE3E9E5)
                 ) {
-                Column(
-                        modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-                )
 
-
-                {
-                    logo()
-                }
             }
         }
     }
 }
 }
+
 @Composable
 fun logo() {
     Image(

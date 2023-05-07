@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PlantSaver</string>
     <string name="title_activity_opener">opener</string>
+    <string name="title_activity_homescreen">homescreen</string>
 </resources>
