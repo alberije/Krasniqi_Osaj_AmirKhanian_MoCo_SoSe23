@@ -25,7 +25,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PlantSaverTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = Color(0xFFE3E9E5)
@@ -37,11 +36,12 @@ class MainActivity : ComponentActivity() {
                     )
                     {
                         //logo()
-                        hello()
+                        //hello()
                         //Plants()
                         //Add()
+
                         //IconAdd()
-                       // IconEdit()
+                        //IconEdit()
                         //IconName()
                     }
                 }
