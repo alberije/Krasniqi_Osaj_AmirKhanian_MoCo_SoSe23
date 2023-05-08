@@ -73,7 +73,6 @@ fun hello() {
 
         Text(
             text = "Hello",
-            modifier = Modifier,
             color = Color(0xFF2d681c),
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold

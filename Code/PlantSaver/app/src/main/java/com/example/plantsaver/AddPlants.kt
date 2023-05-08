@@ -21,6 +21,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -63,6 +64,7 @@ fun Add() {
                 text = "Add plants",
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
+                color = Color(0xFF2d681c),
 
                 modifier = Modifier.padding(vertical = 30.dp)
             )
