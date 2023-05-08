@@ -37,7 +37,9 @@ class MainActivity : ComponentActivity() {
                     )
                     {
                         //logo()
-                        hello()
+                        //hello()
+                        //Plants()
+                        Add()
                     }
                 }
             }
