@@ -56,8 +56,6 @@ class homescreen : ComponentActivity() {
 @Composable
 fun hello() {
 
-
-
     Column(
         modifier = Modifier.fillMaxSize() .background(Color(0xFFE3E9E5)),
         verticalArrangement = Arrangement.Center,
@@ -101,6 +99,7 @@ fun hello() {
         Spacer(modifier = Modifier.height(70.dp))
 
         Button(onClick = { },
+            colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .width(170.dp)

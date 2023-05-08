@@ -14,8 +14,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -86,7 +95,7 @@ fun Plants() {
                                     .height(150.dp)
                                     .shadow(4.dp, RoundedCornerShape(9.dp))
                                     .background(
-                                        androidx.compose.ui.graphics.Color.White,
+                                        Color.White,
                                         RoundedCornerShape(9.dp)
                                     ),
                                 contentAlignment = Alignment.Center
@@ -99,7 +108,7 @@ fun Plants() {
                                     .height(150.dp)
                                     .shadow(4.dp, RoundedCornerShape(9.dp))
                                     .background(
-                                        androidx.compose.ui.graphics.Color.White,
+                                        Color.White,
                                         RoundedCornerShape(9.dp)
                                     ),
                                 contentAlignment = Alignment.Center
@@ -120,7 +129,7 @@ fun Plants() {
                                     .height(150.dp)
                                     .shadow(4.dp, RoundedCornerShape(9.dp))
                                     .background(
-                                        androidx.compose.ui.graphics.Color.White,
+                                        Color.White,
                                         RoundedCornerShape(9.dp)
                                     ),
                                 contentAlignment = Alignment.Center
@@ -133,7 +142,7 @@ fun Plants() {
                                     .height(150.dp)
                                     .shadow(4.dp, RoundedCornerShape(9.dp))
                                     .background(
-                                        androidx.compose.ui.graphics.Color.White,
+                                        Color.White,
                                         RoundedCornerShape(9.dp)
                                     ),
                                 contentAlignment = Alignment.Center
@@ -154,7 +163,7 @@ fun Plants() {
                                     .height(150.dp)
                                     .shadow(4.dp, RoundedCornerShape(9.dp))
                                     .background(
-                                        androidx.compose.ui.graphics.Color.White,
+                                        Color.White,
                                         RoundedCornerShape(9.dp)
                                     ),
                                 contentAlignment = Alignment.Center
@@ -167,19 +176,68 @@ fun Plants() {
                                     .height(150.dp)
                                     .shadow(4.dp, RoundedCornerShape(9.dp))
                                     .background(
-                                        androidx.compose.ui.graphics.Color.White,
+                                        Color.White,
                                         RoundedCornerShape(9.dp)
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(text = "Plant 6")
                             }
+
                         }
 
 
                     }
                 }
             }
+
         }
+    }
+}
+
+
+@Composable
+fun IconAdd() {
+    FloatingActionButton(
+        onClick = {},
+        contentColor = Color.White,
+        shape = CircleShape,
+        containerColor = Color(0xFF55B663)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = "add "
+        )
+    }
+}
+
+@Composable
+fun IconEdit() {
+    FloatingActionButton(
+        onClick = {},
+        contentColor = Color.White,
+        shape = CircleShape,
+        containerColor = Color(0xFF55B663)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Create,
+            contentDescription = "Edit button"
+        )
+    }
+}
+
+@Composable
+fun IconName() {
+    FloatingActionButton(
+        onClick = {},
+        contentColor = Color.Black,
+        shape = CircleShape,
+        containerColor = Color(0xFFD9D9D9)
+    ) {
+        Text(text = "MA",
+            style = TextStyle(
+                fontWeight = FontWeight.Bold
+            )
+        )
     }
 }

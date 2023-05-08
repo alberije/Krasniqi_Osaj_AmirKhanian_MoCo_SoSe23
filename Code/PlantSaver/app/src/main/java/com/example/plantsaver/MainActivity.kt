@@ -37,9 +37,12 @@ class MainActivity : ComponentActivity() {
                     )
                     {
                         //logo()
-                        //hello()
+                        hello()
                         //Plants()
-                        Add()
+                        //Add()
+                        //IconAdd()
+                       // IconEdit()
+                        //IconName()
                     }
                 }
             }
