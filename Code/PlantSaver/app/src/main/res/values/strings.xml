@@ -5,4 +5,5 @@
     <string name="title_activity_my_plants">MyPlants</string>
     <string name="title_activity_add_plants">AddPlants</string>
     <string name="title_activity_test">test</string>
+    <string name="back" />
 </resources>
