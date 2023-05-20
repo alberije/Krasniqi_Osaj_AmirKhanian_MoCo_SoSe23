@@ -6,4 +6,5 @@
     <string name="title_activity_add_plants">AddPlants</string>
     <string name="title_activity_test">test</string>
     <string name="back" />
+    <string name="title_activity_main2">MainActivity2</string>
 </resources>

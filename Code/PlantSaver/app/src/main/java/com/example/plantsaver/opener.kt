@@ -35,7 +35,7 @@ class opener : ComponentActivity() {
 }
 
 @Composable
-fun logo() {
+fun OpenerScreen() {
     Image(
         painter = painterResource(id = R.drawable.logo),
         contentDescription = "logo",

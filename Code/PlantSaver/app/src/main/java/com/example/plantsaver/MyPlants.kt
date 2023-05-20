@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,6 +19,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
@@ -43,7 +47,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.*
+
 
 class MyPlants : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +72,7 @@ class MyPlants : ComponentActivity() {
 }
 
 @Composable
-fun Plants() {
+fun MyPlantsScreen(navController: NavHostController) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -74,7 +83,7 @@ fun Plants() {
 
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigate("homescreen")}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.back)
@@ -207,6 +216,15 @@ fun Plants() {
 
 
 
+
+                        }
+
+                        Spacer(modifier = Modifier.height(30.dp))
+
+                        Row() {
+                            Box() {
+                                IconAdd(navController = navController)
+                            }
                         }
 
 
@@ -216,15 +234,18 @@ fun Plants() {
                 }
             }
 
+
         }
     }
+
 }
 
 
+
 @Composable
-fun IconAdd() {
+fun IconAdd(navController: NavHostController) {
     FloatingActionButton(
-        onClick = {},
+        onClick = {navController.navigate("addPlantsfragment")},
         contentColor = Color.White,
         shape = CircleShape,
         containerColor = Color(0xFF55B663)

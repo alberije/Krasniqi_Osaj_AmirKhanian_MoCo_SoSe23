@@ -38,7 +38,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 class AddPlants : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,9 +65,10 @@ class AddPlants : ComponentActivity() {
 }
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Add() {
+fun AddplantsScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
 
@@ -73,7 +81,7 @@ fun Add() {
         ) {
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()) {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigate("myPlantsFragment")}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.back)
@@ -277,7 +285,6 @@ fun Add() {
                 }
             }
         }
-
 
 
 
