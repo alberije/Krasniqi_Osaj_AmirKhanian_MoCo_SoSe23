@@ -72,18 +72,20 @@ class MyPlants : ComponentActivity() {
 }
 
 @Composable
-fun MyPlantsScreen(navController: NavHostController) {
+fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>) {
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+
         ) {
 
-            Row(verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()) {
-                IconButton(onClick = { navController.navigate("homescreen")}) {
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                IconButton(onClick = { navController.navigate("homescreen") }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.back)
@@ -92,198 +94,187 @@ fun MyPlantsScreen(navController: NavHostController) {
             }
 
 
-
-
             Text(
-                text = "My plants",
+                text = "My Plants",
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF2d681c),
-                modifier = Modifier.padding(vertical = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp)
             )
+
+            Row() {
+                Box() {
+                    IconAdd(navController = navController)
+                }
+            }
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(16.dp)
-                ) {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                plantList.forEach { plant ->
+                    Box(
+                        modifier = Modifier
+                            .width(150.dp)
+                            .height(150.dp)
+                            .shadow(4.dp, RoundedCornerShape(9.dp))
+                            .background(
+                                Color.White,
+                                RoundedCornerShape(9.dp)
+                            ),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .width(150.dp)
-                                    .height(150.dp)
-                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                    .background(
-                                        Color.White,
-                                        RoundedCornerShape(9.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(text = "Plant 1")
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .width(150.dp)
-                                    .height(150.dp)
-                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                    .background(
-                                        Color.White,
-                                        RoundedCornerShape(9.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(text = "Plant 2")
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .width(150.dp)
-                                    .height(150.dp)
-                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                    .background(
-                                        Color.White,
-                                        RoundedCornerShape(9.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(text = "Plant 3")
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .width(150.dp)
-                                    .height(150.dp)
-                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                    .background(
-                                        Color.White,
-                                        RoundedCornerShape(9.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(text = "Plant 4")
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .width(150.dp)
-                                    .height(150.dp)
-                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                    .background(
-                                        Color.White,
-                                        RoundedCornerShape(9.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(text = "Plant 5")
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .width(150.dp)
-                                    .height(150.dp)
-                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                    .background(
-                                        Color.White,
-                                        RoundedCornerShape(9.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(text = "Plant 6")
-                            }
-
-
-
-
-                        }
-
-                        Spacer(modifier = Modifier.height(30.dp))
-
-                        Row() {
-                            Box() {
-                                IconAdd(navController = navController)
-                            }
-                        }
-
-
+                        Text(text = plant.name)
                     }
+
+
+
 
 
                 }
             }
-
-
         }
     }
 
 }
 
 
-
 @Composable
-fun IconAdd(navController: NavHostController) {
-    FloatingActionButton(
-        onClick = {navController.navigate("addPlantsfragment")},
-        contentColor = Color.White,
-        shape = CircleShape,
-        containerColor = Color(0xFF55B663)
+fun MyPlantsScreenn(navController: NavHostController, plantList: List<Plant>) {
+    val text: String? = navController.previousBackStackEntry
+        ?.arguments?.getString("enteredText")
+
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Icon(
-            imageVector = Icons.Default.Add,
-            contentDescription = "add "
-        )
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Row(
+                //verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                IconButton(onClick = { navController.navigate("homescreen") }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = stringResource(R.string.back)
+                    )
+                }
+            }
+
+Row() {
+    Text(
+        text = "My plants",
+        fontSize = 36.sp,
+        fontWeight = FontWeight.Bold,
+        color = Color(0xFF2d681c),
+        modifier = Modifier.padding(vertical = 16.dp)
+    )
+}
+
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier
+                    .fillMaxWidth()) {
+                    Text(
+                        text = "hello",
+                        modifier = Modifier.padding(top = 8.dp),
+                        color = Color.Black
+                    )
+                    IconAdd(navController = navController)
+                }
+            }
+
+            Column(modifier = Modifier.fillMaxWidth()) {
+                plantList.chunked(2).forEach { rowItems ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        rowItems.forEach { plant ->
+                            Box(
+                                modifier = Modifier
+                                    .width(150.dp)
+                                    .height(150.dp)
+                                    .shadow(4.dp, RoundedCornerShape(9.dp))
+                                    .background(Color.White, RoundedCornerShape(9.dp))
+                                    .padding(8.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    //verticalArrangement = Arrangement.Center
+                                ) {
+                                    Text(text = plant.name)
+                                    Text(text = plant.family)
+                                    Text(text = plant.location)
+                                    Text(text = plant.care)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+
     }
 }
 
-@Composable
-fun IconEdit() {
-    FloatingActionButton(
-        onClick = {},
-        contentColor = Color.White,
-        shape = CircleShape,
-        containerColor = Color(0xFF55B663)
-    ) {
-        Icon(
-            imageVector = Icons.Default.Create,
-            contentDescription = "Edit button"
-        )
-    }
-}
 
-@Composable
-fun IconName() {
-    FloatingActionButton(
-        onClick = {},
-        contentColor = Color.Black,
-        shape = CircleShape,
-        containerColor = Color(0xFFD9D9D9)
-    ) {
-        Text(text = "MA",
-            style = TextStyle(
-                fontWeight = FontWeight.Bold
+
+
+
+    @Composable
+    fun IconAdd(navController: NavHostController) {
+        FloatingActionButton(
+            onClick = { navController.navigate("addPlantsfragment") },
+            contentColor = Color.White,
+            shape = CircleShape,
+            containerColor = Color(0xFF55B663)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "add "
             )
-        )
+        }
     }
-}
+
+    @Composable
+    fun IconEdit() {
+        FloatingActionButton(
+            onClick = {},
+            contentColor = Color.White,
+            shape = CircleShape,
+            containerColor = Color(0xFF55B663)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Create,
+                contentDescription = "Edit button"
+            )
+        }
+    }
+
+    @Composable
+    fun IconName() {
+        FloatingActionButton(
+            onClick = {},
+            contentColor = Color.Black,
+            shape = CircleShape,
+            containerColor = Color(0xFFD9D9D9)
+        ) {
+            Text(
+                text = "MA",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold
+                )
+            )
+        }
+    }
+

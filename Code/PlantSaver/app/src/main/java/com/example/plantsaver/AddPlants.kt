@@ -15,12 +15,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,23 +28,23 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
-import androidx.navigation.Navigation
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.findNavController
+
 
 class AddPlants : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,15 +67,16 @@ class AddPlants : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddplantsScreen(navController: NavHostController) {
+fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Plant>) {
+    val plant = remember{mutableStateOf(Plant("","","",""))}
+
     Box(
-        modifier = Modifier
+        modifier = Modifier.fillMaxSize()
 
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 100.dp),
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(verticalAlignment = Alignment.CenterVertically,
@@ -140,8 +140,8 @@ fun AddplantsScreen(navController: NavHostController) {
                                     )
 
                                     TextField(
-                                        value = "",
-                                        onValueChange = { },
+                                        value = plant.value.name,
+                                        onValueChange = { plant.value = plant.value.copy(name= it) },
                                         label = { Text("Enter your plant Name") },
                                         modifier = Modifier.width(230.dp)
 
@@ -160,8 +160,8 @@ fun AddplantsScreen(navController: NavHostController) {
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = "",
-                                        onValueChange = { },
+                                        value = plant.value.family,
+                                        onValueChange = { plant.value = plant.value.copy(family = it)},
                                         label = { Text("Enter your Plant Family") },
                                         modifier = Modifier.width(230.dp)
                                     )
@@ -178,8 +178,8 @@ fun AddplantsScreen(navController: NavHostController) {
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = "",
-                                        onValueChange = { },
+                                        value = plant.value.location,
+                                        onValueChange = { plant.value = plant.value.copy(location = it)},
                                         label = { Text("Enter your Plant location") },
                                         modifier = Modifier.width(230.dp)
                                     )
@@ -197,8 +197,8 @@ fun AddplantsScreen(navController: NavHostController) {
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = "",
-                                        onValueChange = { },
+                                        value = plant.value.care,
+                                        onValueChange = {plant.value = plant.value.copy(care = it) },
                                         label = { Text("Enter Plantcare") },
                                         modifier = Modifier.width(230.dp)
                                     )
@@ -219,6 +219,7 @@ fun AddplantsScreen(navController: NavHostController) {
 
                                 }
                                 Spacer(modifier = Modifier.height(40.dp))
+
 
 
                                 Column() {
@@ -271,9 +272,32 @@ fun AddplantsScreen(navController: NavHostController) {
                                                 }
                                                     }
 
+
+
+                                            
                                                 }
+
                                             }
                                         }
+                                Spacer(modifier = Modifier.padding(vertical = 15.dp))
+
+                                Row() {
+                                    Box() {
+                                        Button(
+                                            onClick = {
+                                                plantList.add(plant.value)
+                                                plant.value = Plant("","","","")
+                                            },
+                                            colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
+                                            modifier = Modifier
+                                                .width(100.dp)
+                                                .height(40.dp)
+                                                .clip(RoundedCornerShape(18.dp)))
+                                        {
+                                            Text(text = "add")
+                                        }
+                                    }
+                                }
                                     }
                                 }
 
@@ -284,8 +308,34 @@ fun AddplantsScreen(navController: NavHostController) {
                     }
                 }
             }
+    
+    
         }
 
+data class Plant(
+    val name: String,
+    val family: String,
+    val location: String,
+    val care: String
+)
 
 
+class AddPlantss(private val navController: NavHostController, private val plantList: MutableList<Plant>) : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            PlantSaverTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+
+                    AddplantsScreen(navController = navController, plantList = plantList)
+
+                }
+
+            }
+        }
+    }
+}
 

@@ -62,6 +62,7 @@ fun Homescreen(navController: NavHostController) {
         mutableStateOf("")
     }
 
+
     Column(
         modifier = Modifier.fillMaxSize() .background(Color(0xFFE3E9E5)),
         verticalArrangement = Arrangement.Center,
@@ -95,7 +96,7 @@ fun Homescreen(navController: NavHostController) {
         ) {
             OutlinedTextField(
                 value = text,
-                onValueChange = { text = it},
+                onValueChange = { newValue -> text = newValue},
                 label = { Text(text = "Enter your name") },
                 singleLine = true,
                 modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)
