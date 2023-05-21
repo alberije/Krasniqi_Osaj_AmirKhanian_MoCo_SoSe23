@@ -33,8 +33,12 @@ class MainActivity : ComponentActivity() {
                     )
                     {
                         val navController = rememberNavController()
+                        val plantViewModel = PlantViewModel()
 
-                        NavHost(navController = navController, startDestination = "homescreen") {
+                        NavHost(navController = navController, startDestination = "test") {
+                            composable("test"){
+                                PlantSelectionScreen(plantViewModel = plantViewModel)
+                            }
                             composable("homescreen") {
                                 Homescreen(navController = navController)
                             }

@@ -38,8 +38,7 @@ class PlantFamily : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val plantViewModel = PlantViewModel()
-                    PlantSelectionScreen(plantViewModel)
+
                 }
             }
         }
