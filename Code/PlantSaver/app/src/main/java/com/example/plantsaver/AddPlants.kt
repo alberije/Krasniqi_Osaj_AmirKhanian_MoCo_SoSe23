@@ -312,12 +312,6 @@ fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Pla
     
         }
 
-data class Plant(
-    val name: String,
-    val family: String,
-    val location: String,
-    val care: String
-)
 
 
 class AddPlantss(private val navController: NavHostController, private val plantList: MutableList<Plant>) : ComponentActivity() {
