@@ -37,7 +37,7 @@ Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanz
 
 **Add Care Plan**
 
-![PlantSaver_CarePlan](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/dcb44064-2c00-4609-9c8c-65e7653494c6)
+![PlantSaver_CarePlan](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/9418ba7b-8e2c-4dd8-92ac-8e8ba122d6d8)
 
 **Take Plant-Photo**
 
