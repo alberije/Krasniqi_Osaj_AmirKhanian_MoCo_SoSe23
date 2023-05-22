@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                                 Homescreen(navController)
                             }
                             composable("myPlantsFragment") {
-                                MyPlantsScreenn(navController, plantList)
+                                MyPlantsScreen(navController, plantList)
                             }
                             composable("AddPlantsFragment") {
                                 AddplantsScreenn(navController, plantList)

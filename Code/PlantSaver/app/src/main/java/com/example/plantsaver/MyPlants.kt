@@ -71,73 +71,9 @@ class MyPlants : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>) {
-
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-
-        ) {
-
-            Row(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                IconButton(onClick = { navController.navigate("homescreen") }) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = stringResource(R.string.back)
-                    )
-                }
-            }
-
-
-            Text(
-                text = "My Plants",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF2d681c),
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-
-            Row() {
-                Box() {
-                    IconAdd(navController = navController)
-                }
-            }
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                plantList.forEach { plant ->
-                    Box(
-                        modifier = Modifier
-                            .width(150.dp)
-                            .height(150.dp)
-                            .shadow(4.dp, RoundedCornerShape(9.dp))
-                            .background(
-                                Color.White,
-                                RoundedCornerShape(9.dp)
-                            ),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(text = plant.name)
-                    }
-
-
-                }
-            }
-        }
-    }
-
-}
-
-
-@Composable
-fun MyPlantsScreenn(navController: NavHostController, plantList: List<Plant>) {
     val text: String? = navController.previousBackStackEntry
         ?.arguments?.getString("enteredText")
 
