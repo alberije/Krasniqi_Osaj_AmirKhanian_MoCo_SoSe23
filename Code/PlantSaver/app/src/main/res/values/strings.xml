@@ -10,4 +10,5 @@
     <string name="title_activity_plant_family">PlantFamily</string>
     <string name="title_activity_example">example</string>
     <string name="title_activity_plant_fam">PlantFam</string>
+    <string name="title_activity_add_plantsnew">addPlantsnew</string>
 </resources>

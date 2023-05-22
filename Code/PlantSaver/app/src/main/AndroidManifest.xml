@@ -12,6 +12,11 @@
         android:theme="@style/Theme.PlantSaver"
         tools:targetApi="31">
         <activity
+            android:name=".addPlantsnew"
+            android:exported="false"
+            android:label="@string/title_activity_add_plantsnew"
+            android:theme="@style/Theme.PlantSaver" />
+        <activity
             android:name=".PlantFam"
             android:exported="false"
             android:label="@string/title_activity_plant_fam"

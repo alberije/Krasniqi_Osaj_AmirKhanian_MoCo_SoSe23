@@ -35,12 +35,8 @@ class MainActivity : ComponentActivity() {
                         val navController = rememberNavController()
                         val plantViewModel = PlantViewModel()
 
-                        NavHost(navController = navController, startDestination = "test") {
-                            composable("test"){
+                        NavHost(navController = navController, startDestination = "homescreen") {
 
-                                //PlantSelectionScreen(navController,plantViewModel)
-                                CarePlanPage(navController = navController)
-                            }
                             composable("homescreen") {
                                 Homescreen(navController)
                             }
@@ -48,9 +44,21 @@ class MainActivity : ComponentActivity() {
                                 MyPlantsScreenn(navController, plantList)
                             }
                             composable("AddPlantsFragment") {
-                                AddplantsScreen(navController, plantList)
+                                AddplantsScreenn(navController, plantList)
                             }
 
+                            composable("selectPlantFragment"){
+                                PlantSelectionScreen(navController,plantViewModel)
+                            }
+
+                            composable("addplancareFragment") {
+                                CarePlanPage(navController)
+                            }
+
+                            composable("test"){
+                                //PlantSelectionScreen(navController,plantViewModel)
+                                //CarePlanPage(navController = navController)
+                            }
                         }
                     }
                 }

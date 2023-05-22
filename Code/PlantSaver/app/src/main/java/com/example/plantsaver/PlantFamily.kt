@@ -84,7 +84,7 @@ fun PlantSelectionScreen(navController: NavHostController, plantViewModel: Plant
             //verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            IconButton(onClick = { navController.navigate("homescreen") }) {
+            IconButton(onClick = { navController.navigate("AddPlantsFragment") }) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = stringResource(R.string.back)

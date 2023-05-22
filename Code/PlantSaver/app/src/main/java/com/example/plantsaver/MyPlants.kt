@@ -128,9 +128,6 @@ fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>) {
                     }
 
 
-
-
-
                 }
             }
         }
