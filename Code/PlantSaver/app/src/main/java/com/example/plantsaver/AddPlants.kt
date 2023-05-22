@@ -160,8 +160,8 @@ fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Pla
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = plant.value.family,
-                                        onValueChange = { plant.value = plant.value.copy(family = it)},
+                                        value = plant.value.description,
+                                        onValueChange = { plant.value = plant.value.copy(description = it)},
                                         label = { Text("Enter your Plant Family") },
                                         modifier = Modifier.width(230.dp)
                                     )

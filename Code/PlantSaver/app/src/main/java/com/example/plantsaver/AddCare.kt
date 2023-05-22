@@ -3,7 +3,6 @@ package com.example.plantsaver
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,19 +15,16 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,21 +33,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavHostController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
 
-class PlantFamily : ComponentActivity() {
+class example : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -69,10 +60,8 @@ class PlantFamily : ComponentActivity() {
 }
 
 
-
 @Composable
-fun PlantSelectionScreen(navController: NavHostController, plantViewModel: PlantViewModel) {
-
+fun CarePlanPage(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,11 +69,10 @@ fun PlantSelectionScreen(navController: NavHostController, plantViewModel: Plant
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-            //verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            IconButton(onClick = { navController.navigate("homescreen") }) {
+
+        Row(verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()) {
+            IconButton(onClick = { navController.navigate("myPlantsFragment")}) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = stringResource(R.string.back)
@@ -92,97 +80,65 @@ fun PlantSelectionScreen(navController: NavHostController, plantViewModel: Plant
             }
         }
 
-        Spacer(modifier = Modifier.height(30.dp))
-
         Text(
-            text = "Select Plant Family",
+            text = "Add Care Plant",
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
             color = Color(0xFF2d681c),
+            textAlign = TextAlign.Center,
             modifier = Modifier.padding(vertical = 30.dp)
         )
 
-        Spacer(modifier = Modifier.height(90.dp))
 
-        dropDownMenu(plantViewModel)
+        var mondayChecked by remember { mutableStateOf(false) }
+        var tuesdayChecked by remember { mutableStateOf(false) }
+        var wednesdayChecked by remember { mutableStateOf(false) }
+        var thursdayChecked by remember { mutableStateOf(false) }
+        var fridayChecked by remember { mutableStateOf(false) }
+        var saturdayChecked by remember { mutableStateOf(false) }
+        var sundayChecked by remember { mutableStateOf(false) }
 
-        Spacer(modifier = Modifier.height(140.dp))
+        WeekDay("Monday", mondayChecked) { mondayChecked = it }
+        WeekDay("Tuesday", tuesdayChecked) { tuesdayChecked = it }
+        WeekDay("Wednesday", wednesdayChecked) { wednesdayChecked = it }
+        WeekDay("Thursday", thursdayChecked) { thursdayChecked = it }
+        WeekDay("Friday", fridayChecked) { fridayChecked = it }
+        WeekDay("Saturday", saturdayChecked) { saturdayChecked = it }
+        WeekDay("Sunday", sundayChecked) { sundayChecked = it }
 
-        Text(
-            text = "Can't find?",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(vertical = 16.dp)
-        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             onClick = { },
+            colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
             modifier = Modifier
-                .padding(bottom = 16.dp)
                 .width(180.dp)
                 .height(40.dp)
-                .clip(RoundedCornerShape(18.dp)),
-            colors = ButtonDefaults.buttonColors(Color(0xFF55B663))
+                .clip(RoundedCornerShape(18.dp))
         ) {
-            Text(text = "Create your own")
+            Text(text = "Add")
         }
 
-
     }
-
-
-
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun dropDownMenu(plantViewModel: PlantViewModel){
-    var expanded by remember { mutableStateOf(false)}
-    val plantList = plantViewModel.getAllPlants()
-    var selectedItem by remember { mutableStateOf("") }
+fun WeekDay(day: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(vertical = 8.dp)
+    ) {
+        Text(text = day, modifier = Modifier.width(80.dp))
 
-    var textFieldSize by remember { mutableStateOf(Size.Zero) }
-
-    val icon = if (expanded){
-        Icons.Filled.KeyboardArrowUp
-    }else{
-        Icons.Filled.KeyboardArrowDown
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange
+        )
     }
-
-Column(modifier =  Modifier.padding(20.dp)) {
-
-    OutlinedTextField(
-        value = selectedItem,
-        onValueChange = {selectedItem = it},
-        modifier = Modifier
-            .fillMaxWidth()
-            .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() },
-        label = { Text(text = "search for plant family ")},
-        trailingIcon = {
-            Icon(icon,"",Modifier.clickable{expanded =!expanded})
-        }
-    )
-
-
-    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false },
-    modifier = Modifier
-        .width(with(LocalDensity.current){textFieldSize.width.toDp()})
-        ) {
-        plantList.forEach{plant->
-            androidx.compose.material.DropdownMenuItem(onClick = {  selectedItem = plant.name
-                expanded =false }) {
-                Text(text = plant.name)
-            }
-
-
-        }
-    }
-
 }
 
-
-
-}
 

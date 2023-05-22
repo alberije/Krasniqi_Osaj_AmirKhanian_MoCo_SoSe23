@@ -12,6 +12,16 @@
         android:theme="@style/Theme.PlantSaver"
         tools:targetApi="31">
         <activity
+            android:name=".PlantFam"
+            android:exported="false"
+            android:label="@string/title_activity_plant_fam"
+            android:theme="@style/Theme.PlantSaver" />
+        <activity
+            android:name=".example"
+            android:exported="false"
+            android:label="@string/title_activity_example"
+            android:theme="@style/Theme.PlantSaver" />
+        <activity
             android:name=".PlantFamily"
             android:exported="true"
             android:label="@string/title_activity_plant_family"

@@ -210,7 +210,7 @@ Row() {
                                     //verticalArrangement = Arrangement.Center
                                 ) {
                                     Text(text = plant.name)
-                                    Text(text = plant.family)
+                                    Text(text = plant.description)
                                     Text(text = plant.location)
                                     Text(text = plant.care)
                                 }

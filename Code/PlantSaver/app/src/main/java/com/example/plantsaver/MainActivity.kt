@@ -37,10 +37,12 @@ class MainActivity : ComponentActivity() {
 
                         NavHost(navController = navController, startDestination = "test") {
                             composable("test"){
-                                PlantSelectionScreen(plantViewModel = plantViewModel)
+
+                                //PlantSelectionScreen(navController,plantViewModel)
+                                CarePlanPage(navController = navController)
                             }
                             composable("homescreen") {
-                                Homescreen(navController = navController)
+                                Homescreen(navController)
                             }
                             composable("myPlantsFragment") {
                                 MyPlantsScreenn(navController, plantList)
