@@ -16,32 +16,45 @@ Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanz
 
 **Opener**
 
-![PlantSaver_Opener](https://user-images.githubusercontent.com/92301157/236635074-864f74c7-c2e1-4d54-9e93-78a9b8489d20.png)
+![PlantSaver_Opener_01](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/4cbba11b-ba09-48f8-b520-a9d2cf90bf9e)
+
+**Home - Enter UserName**
+
+![PlantSaver_HelloName_02](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/9901fd1f-648d-4164-8763-0b9003a22c1e)
+
+**Error If UserName already exists**
+
+![PlantSaver_HelloName_Fehlermeldung_03](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/b98023ae-7218-425b-8c6d-a68dc01a44de)
+
+**User-Plant-Collection**
+
+![PlantSaver_UserCollection_04](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/81e7b34d-33b7-4934-be18-6b6aecd9af95)
+
+**Search Database for PlantFamily**
+
+![PlantSaver_NewPlant_SearchDatabase_06](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/4c11fa9c-08ae-4e86-8648-899d13099912)
+
+**Create New PlantFamily-Datas for Database**
+
+![PlantSaver_CreatePlantFamily_UserDataForDatabase_07](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/0a331ed5-a0c3-4518-9ad0-1e0096cb4395)
+
+**Add CarePlan**
+
+![PlantSaver_CarePlan_08](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/54df6479-305d-448a-8dcb-05603a990a5f)
+
+**UI FullDataPlant**
+
+![PlantSaver_FullDataPlant_09](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/71ef912a-13e9-4bee-aa04-cd0e5b904d63)
+
+**Take weekly Plant-Photo**
+
+![PlantSaver_TakePlantPhoto_10](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/f0c49458-eae4-4eed-b216-fa2b66da9601)
+
+**Delete Plant**
+
+![PlantSaver_DeletePlant_11](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/ebc0c691-1ed1-470e-b41c-c844ae43bcd4)
 
 
-**Home**
-
-![PlantSaver_HelloName](https://user-images.githubusercontent.com/92301157/236635082-5e30e121-a94a-471b-8729-c7323cbac4be.png)
-
-**User Plant-Collection**
-
-![PlantSaver_UserCollection](https://user-images.githubusercontent.com/92301157/236644388-cbc35c74-96c9-4848-9933-eb75a0d4678a.png)
-
-**New Plant**
-
-![PlantSaver_NewPlant](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/500cf510-1414-40b3-9361-956fab8a2552)
-
-**Select Plant Family**
-
-![PlantSaver_Plantfamily](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/fdfc86e4-f52b-4515-9dfb-177b889bdd8b)
-
-**Add Care Plan**
-
-![PlantSaver_CarePlan](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/9418ba7b-8e2c-4dd8-92ac-8e8ba122d6d8)
-
-**Take Plant-Photo**
-
-![PlantSaver_TakePlantPhoto](https://user-images.githubusercontent.com/92301157/236635127-8447a798-25a5-448e-b8eb-a0809c084079.png)
 
 
 
