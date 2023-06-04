@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         val navController = rememberNavController()
                         val plantViewModel = PlantViewModel()
 
-                        NavHost(navController = navController, startDestination = "homescreen") {
+                        NavHost(navController = navController, startDestination = "test") {
 
                             composable("homescreen") {
                                 Homescreen(navController)
@@ -56,8 +56,7 @@ class MainActivity : ComponentActivity() {
                             }
 
                             composable("test"){
-                                //PlantSelectionScreen(navController,plantViewModel)
-                                //CarePlanPage(navController = navController)
+                                CarePlanPage(navController)
                             }
                         }
                     }
