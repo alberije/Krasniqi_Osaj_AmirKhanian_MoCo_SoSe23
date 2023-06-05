@@ -30,6 +30,10 @@ Wir haben uns für diese Idee entschieden, da es allzu oft vorkommt, dass Pflanz
 
 ![PlantSaver_UserCollection_04](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/81e7b34d-33b7-4934-be18-6b6aecd9af95)
 
+**PlantData Clear**
+
+![PlantSaver_NewPlant_05](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/95865111-116a-4d18-a835-60e4a32e4320)
+
 **Search Database for PlantFamily**
 
 ![PlantSaver_NewPlant_SearchDatabase_06](https://github.com/alberije/Krasniqi_Osaj_AmirKhanian_MoCo_SoSe23/assets/92301157/4c11fa9c-08ae-4e86-8648-899d13099912)
