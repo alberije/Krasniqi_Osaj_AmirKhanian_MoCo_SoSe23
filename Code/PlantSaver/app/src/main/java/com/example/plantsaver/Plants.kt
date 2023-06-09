@@ -1,6 +1,12 @@
 package com.example.plantsaver
 
-data class Plant(val name: String, val description: String, val location: String, val care: String) // Model-Klasse, die die Daten für die Zimmerpflanzen enthält
+import androidx.room.Entity
+
+@Entity(tableName = "plants")
+data class Plant(val name: String,
+                 val description: String,
+                 val location: String,
+                 val care: String) // Model-Klasse, die die Daten für die Zimmerpflanzen enthält
 
 class PlantViewModel { //ViewModel-Klasse, die die Logik für den Zugriff auf die Daten und deren Bereitstellung an die View enthält
     private val plantList: List<Plant> = listOf(
