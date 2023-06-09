@@ -21,4 +21,6 @@ class PlantViewModel { //ViewModel-Klasse, die die Logik für den Zugriff auf di
     fun getAllPlants(): List<Plant> {
         return plantList
     }
+
+
 }
