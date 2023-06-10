@@ -15,4 +15,5 @@
     <string name="title_activity_my_plantssaved">MyPlantssaved</string>
     <string name="title_activity_fulldataplant">fulldataplant</string>
     <string name="title_activity_create_plant_fam">CreatePlantFam</string>
+    <string name="title_activity_new_add_plants">NewAddPlants</string>
 </resources>

@@ -21,3 +21,4 @@ interface PlantDao {
     @Delete
     fun deletePlant(plant: Plant)
 }
+

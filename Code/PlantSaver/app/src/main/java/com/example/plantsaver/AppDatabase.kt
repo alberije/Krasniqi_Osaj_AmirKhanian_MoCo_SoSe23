@@ -7,3 +7,4 @@ abstract class AppDatabase {
     abstract fun userDao():  UserDao
     abstract fun plantDao(): PlantDao
 }
+

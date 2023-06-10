@@ -136,54 +136,5 @@ fun PlantSelectionScreen(navController: NavHostController, plantViewModel: Plant
 
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun dropDownMenu(plantViewModel: PlantViewModel){
-    var expanded by remember { mutableStateOf(false)} //speichert der aktuelle zustand des DropdownMenu
-    val plantList = plantViewModel.getAllPlants() //liste von plants abrufen und diese liste wird in plantlist gespeichert
-    var selectedItem by remember { mutableStateOf("") } //speichert die ausgewählten Wert im DropdownMenu
 
-    var textFieldSize by remember { mutableStateOf(Size.Zero) } //speichert Größe des Textfeldes
-
-    //Icons
-    val icon = if (expanded){
-        Icons.Filled.KeyboardArrowUp
-    }else{
-        Icons.Filled.KeyboardArrowDown
-    }
-
-    Column(modifier =  Modifier.padding(20.dp)) {
-
-    OutlinedTextField(
-        value = selectedItem,
-        onValueChange = {selectedItem = it},
-        modifier = Modifier
-            .fillMaxWidth()
-            .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() },
-        label = { Text(text = "search for plant family ")},
-        trailingIcon = {
-            Icon(icon,"",Modifier.clickable{expanded =!expanded})
-        }
-    )
-
-
-    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false },
-    modifier = Modifier
-        .width(with(LocalDensity.current){textFieldSize.width.toDp()})   //with(LocalDensity.current): ist eine Funktion, die den Zugriff auf das aktuelle Density-Objekt in Compose ermöglicht. Density wird verwendet, um metrische Werte in DPs (Density-independent Pixels) zu konvertieren.
-        ) {
-        plantList.forEach{plant->
-            androidx.compose.material.DropdownMenuItem(onClick = {  selectedItem = plant.name
-                expanded =false }) {
-                Text(text = plant.name)
-            }
-
-
-        }
-    }
-
-}
-
-
-
-}
 

@@ -49,7 +49,7 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
         ) {
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()) {
-                IconButton(onClick = { navController.navigate("myPlantsFragment")}) {
+                IconButton(onClick = { navController.navigate("AddPlantsFragment")}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.back)

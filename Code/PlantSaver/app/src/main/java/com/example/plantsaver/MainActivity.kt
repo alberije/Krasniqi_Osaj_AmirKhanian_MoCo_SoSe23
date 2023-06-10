@@ -1,5 +1,6 @@
 package com.example.plantsaver
 
+import CreatePlantFamScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ import com.example.plantsaver.ui.theme.PlantSaverTheme
 
 class MainActivity : ComponentActivity() {
     private val plantList = mutableStateListOf<Plant>()
+    private val nameList = mutableStateListOf<Name>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -35,16 +37,20 @@ class MainActivity : ComponentActivity() {
                         val navController = rememberNavController()
                         val plantViewModel = PlantViewModel()
 
-                        NavHost(navController = navController, startDestination = "test") {
+                        NavHost(navController = navController, startDestination = "openerscreen") {
 
+                            composable("openerscreen") {
+                                OpenerScreen(navController)
+                            }
                             composable("homescreen") {
                                 Homescreen(navController)
                             }
+
                             composable("myPlantsFragment") {
                                 MyPlantsScreen(navController, plantList)
                             }
                             composable("AddPlantsFragment") {
-                                AddplantsScreenn(navController, plantList)
+                                AddplantsScreennew(navController, plantList,plantViewModel)
                             }
 
                             composable("selectPlantFragment"){
@@ -54,6 +60,11 @@ class MainActivity : ComponentActivity() {
                             composable("addplancareFragment") {
                                 CarePlanPage(navController)
                             }
+
+                            composable("createyourownFragment") {
+                                CreatePlantFamScreen(navController, plantList)
+                            }
+
 
                             composable("test"){
                                 CarePlanPage(navController)

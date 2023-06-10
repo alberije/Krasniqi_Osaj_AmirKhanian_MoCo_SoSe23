@@ -74,8 +74,6 @@ class MyPlants : ComponentActivity() {
 
 @Composable
 fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>) {
-    val text: String? = navController.previousBackStackEntry
-        ?.arguments?.getString("enteredText")
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -108,15 +106,19 @@ Row() {
 }
 
 
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(modifier = Modifier
-                    .fillMaxWidth()) {
-                    Text(
-                        text = "hello",
-                        modifier = Modifier.padding(top = 8.dp),
-                        color = Color.Black
-                    )
-                    IconAdd(navController = navController)
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = "Max Mustermann",
+                            color = Color.Black,
+                            modifier = Modifier.padding(start = 8.dp)
+                        )
+
+                        Spacer(modifier = Modifier.width(35.dp))
+
+                        IconAdd(navController = navController)
+                    }
                 }
             }
 

@@ -59,9 +59,7 @@ class homescreen : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Homescreen(navController: NavHostController) {
-    var text by remember{
-        mutableStateOf("")
-    }
+    var name by remember { mutableStateOf("") }
 
 
     Column(
@@ -96,8 +94,8 @@ fun Homescreen(navController: NavHostController) {
 
         ) {
             OutlinedTextField(
-                value = text,
-                onValueChange = { newValue -> text = newValue},
+                value = name,
+                onValueChange = { newValue -> name = newValue},
                 label = { Text(text = "Enter your name") },
                 singleLine = true,
                 modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)
@@ -117,6 +115,7 @@ fun Homescreen(navController: NavHostController) {
             Text(text = "Get started")
         }
     }
+
 }
 
 data class Name(val name: String)
