@@ -15,9 +15,6 @@ interface PlantDao {
     @Insert
     fun insertPlant(plant: Plant)
 
-    @Update
-    fun updatePlant(plant: Plant)
-
     @Delete
     fun deletePlant(plant: Plant)
 }
