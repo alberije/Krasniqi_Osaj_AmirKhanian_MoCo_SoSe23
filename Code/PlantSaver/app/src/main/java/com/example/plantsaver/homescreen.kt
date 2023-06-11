@@ -26,12 +26,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -58,8 +55,8 @@ class homescreen : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Homescreen(navController: NavHostController) {
-    var name by remember { mutableStateOf("") }
+fun Homescreen(navController: NavHostController,nameList: MutableList<Name>) {
+    val name = remember { mutableStateOf("") }
 
 
     Column(
@@ -90,12 +87,12 @@ fun Homescreen(navController: NavHostController) {
                 .height(50.dp)
                 .padding(horizontal = 35.dp)
                 .clip(RoundedCornerShape(8.dp))
-                .background(androidx.compose.ui.graphics.Color.White)
+                .background(Color.White)
 
         ) {
             OutlinedTextField(
-                value = name,
-                onValueChange = { newValue -> name = newValue},
+                value = name.value,
+                onValueChange = { name.value = it},
                 label = { Text(text = "Enter your name") },
                 singleLine = true,
                 modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)
@@ -104,7 +101,9 @@ fun Homescreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(70.dp))
 
-        Button(onClick = { navController.navigate("myPlantsFragment") },
+        Button(onClick = {
+            nameList.add(Name(name.value))
+            navController.navigate("myPlantsFragment") },
             colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)

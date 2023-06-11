@@ -43,11 +43,11 @@ class MainActivity : ComponentActivity() {
                                 OpenerScreen(navController)
                             }
                             composable("homescreen") {
-                                Homescreen(navController)
+                                Homescreen(navController,nameList)
                             }
 
                             composable("myPlantsFragment") {
-                                MyPlantsScreen(navController, plantList)
+                                MyPlantsScreen(navController, plantList,nameList)
                             }
                             composable("AddPlantsFragment") {
                                 AddplantsScreennew(navController, plantList,plantViewModel)

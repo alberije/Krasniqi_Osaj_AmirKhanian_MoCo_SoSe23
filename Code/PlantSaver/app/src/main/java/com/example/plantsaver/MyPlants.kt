@@ -6,34 +6,24 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Create
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,16 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material.*
 
 
 class MyPlants : ComponentActivity() {
@@ -73,7 +58,7 @@ class MyPlants : ComponentActivity() {
 
 
 @Composable
-fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>) {
+fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>, nameList: MutableList<Name>) {
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -95,25 +80,29 @@ fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>) {
                 }
             }
 
-Row() {
-    Text(
-        text = "My plants",
-        fontSize = 36.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color(0xFF2d681c),
-        modifier = Modifier.padding(vertical = 16.dp)
-    )
-}
+            Row() {
+                val firstName = nameList.getOrNull(0)?.name ?: "No name"
+                val myPlantsText = if (firstName.isNotBlank()) {
+                    "$firstName's Plants"
+                } else {
+                    "My plants"
+                }
+
+
+                Text(
+                    text = myPlantsText,
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF2d681c),
+                    modifier = Modifier.padding(vertical = 16.dp)
+                )
+            }
 
 
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            text = "Max Mustermann",
-                            color = Color.Black,
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
+
 
                         Spacer(modifier = Modifier.width(35.dp))
 
@@ -196,20 +185,6 @@ Row() {
         }
     }
 
-    @Composable
-    fun IconName() {
-        FloatingActionButton(
-            onClick = {},
-            contentColor = Color.Black,
-            shape = CircleShape,
-            containerColor = Color(0xFFD9D9D9)
-        ) {
-            Text(
-                text = "MA",
-                style = TextStyle(
-                    fontWeight = FontWeight.Bold
-                )
-            )
-        }
-    }
+
+
 
