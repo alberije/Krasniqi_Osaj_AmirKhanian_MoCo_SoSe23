@@ -16,34 +16,44 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.plantsaver.ui.theme.PlantSaverTheme
+import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.findNavController
+import com.example.plantsaver.ui.theme.PlantSaverTheme
+import com.example.plantsaver.ui.theme.database.Plant
+import com.example.plantsaver.ui.theme.database.PlantViewModel
 
 
 class AddPlants : ComponentActivity() {
@@ -67,8 +77,8 @@ class AddPlants : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Plant>) {
-    val plant = remember{mutableStateOf(Plant("","","",""))}
+fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Plant>, plantViewModel: PlantViewModel) {
+    val plant = remember{ mutableStateOf(Plant("","","","")) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -159,51 +169,59 @@ fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Pla
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Bold
                                     )
-                                    TextField(
-                                        value = plant.value.description,
-                                        onValueChange = { plant.value = plant.value.copy(description = it)},
-                                        label = { Text("Enter your Plant Family") },
-                                        modifier = Modifier.width(230.dp)
-                                    )
-                                }
-
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Text(
-                                        text = "location",
-                                        fontSize = 16.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                    TextField(
-                                        value = plant.value.location,
-                                        onValueChange = { plant.value = plant.value.copy(location = it)},
-                                        label = { Text("Enter your Plant location") },
-                                        modifier = Modifier.width(230.dp)
-                                    )
+                                    dropDownMenu(plantViewModel)
                                 }
 
 
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Text(
-                                        text = "care",
-                                        fontSize = 16.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                    TextField(
-                                        value = plant.value.care,
-                                        onValueChange = {plant.value = plant.value.copy(care = it) },
-                                        label = { Text("Enter Plantcare") },
-                                        modifier = Modifier.width(230.dp)
-                                    )
+                                Column(modifier = Modifier.fillMaxWidth(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Row() {
+                                        Text(
+                                            text = "can't find?",
+                                            fontSize = 16.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+
+
+                                    Spacer(modifier = Modifier.height(16.dp))
+
+                                    Row() {
+
+                                        Button(
+                                            onClick = { navController.navigate("createyourownFragment")},
+                                            colors = ButtonDefaults.buttonColors(Color(0xFF55B663)),
+                                            modifier = Modifier
+                                                .width(150.dp)
+                                                .height(30.dp)
+                                                .clip(RoundedCornerShape(18.dp))
+                                        ) {
+                                            Text(text = "create your own")
+                                        }
+                                    }
+
+
+                                    Spacer(modifier = Modifier.height(16.dp))
+
+                                    Row() {
+
+                                        Button(
+                                            onClick = { navController.navigate("addplancareFragment")},
+                                            colors = ButtonDefaults.buttonColors(Color(0xFF55B663)),
+                                            modifier = Modifier
+                                                .width(150.dp)
+                                                .height(30.dp)
+                                                .clip(RoundedCornerShape(18.dp))
+                                        ) {
+                                            Text(text = "+ add care plan")
+                                        }
+                                    }
+
+
                                 }
 
+                                Spacer(modifier = Modifier.height(16.dp))
 
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
@@ -270,16 +288,16 @@ fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Pla
                                                 ) {
                                                     Text(text = "Week 3")
                                                 }
-                                                    }
-
-
-
-                                            
-                                                }
-
                                             }
+
+
+
+
                                         }
-                                Spacer(modifier = Modifier.padding(vertical = 15.dp))
+
+                                    }
+                                }
+                                Spacer(modifier = Modifier.padding(vertical = 40.dp))
 
                                 Row() {
                                     Box() {
@@ -298,38 +316,68 @@ fun AddplantsScreen(navController: NavHostController, plantList: MutableList<Pla
                                         }
                                     }
                                 }
-                                    }
-                                }
-
                             }
-
                         }
 
                     }
-                }
-            }
-    
-    
-        }
-
-
-
-class AddPlantss(private val navController: NavHostController, private val plantList: MutableList<Plant>) : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            PlantSaverTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-
-                    AddplantsScreen(navController = navController, plantList = plantList)
 
                 }
 
             }
         }
     }
+
+
+}@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun dropDownMenu(plantViewModel: PlantViewModel){
+    var expanded by remember { mutableStateOf(false)} //speichert der aktuelle zustand des DropdownMenu
+    val plantList = plantViewModel.getAllPlants() //liste von plants abrufen und diese liste wird in plantlist gespeichert
+    var selectedItem by remember { mutableStateOf("") } //speichert die ausgewählten Wert im DropdownMenu
+
+    var textFieldSize by remember { mutableStateOf(Size.Zero) } //speichert Größe des Textfeldes
+
+    //Icons
+    val icon = if (expanded){
+        Icons.Filled.KeyboardArrowUp
+    }else{
+        Icons.Filled.KeyboardArrowDown
+    }
+
+    Column(modifier =  Modifier.padding(20.dp)) {
+
+        OutlinedTextField(
+            value = selectedItem,
+            onValueChange = {selectedItem = it},
+            modifier = Modifier
+                .fillMaxWidth()
+                .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() },
+            label = { Text(text = "search for plant family ")},
+            trailingIcon = {
+                Icon(icon,"",Modifier.clickable{expanded =!expanded})
+            }
+        )
+
+
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false },
+            modifier = Modifier
+                .width(with(LocalDensity.current){textFieldSize.width.toDp()})   //with(LocalDensity.current): ist eine Funktion, die den Zugriff auf das aktuelle Density-Objekt in Compose ermöglicht. Density wird verwendet, um metrische Werte in DPs (Density-independent Pixels) zu konvertieren.
+        ) {
+            plantList.forEach{plant->
+                DropdownMenuItem(onClick = {  selectedItem = plant.name
+                    expanded =false }) {
+                    Text(text = plant.name)
+                }
+
+
+            }
+        }
+
+    }
+
+
+
 }
+
+
 

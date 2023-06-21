@@ -30,7 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.plantsaver.Plant
+import com.example.plantsaver.ui.theme.database.Plant
 import com.example.plantsaver.R
 
 @OptIn(ExperimentalMaterial3Api::class)

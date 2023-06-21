@@ -1,4 +1,4 @@
-package com.example.plantsaver
+package com.example.plantsaver.ui.theme.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

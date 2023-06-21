@@ -1,4 +1,4 @@
-package com.example.plantsaver
+package com.example.plantsaver.ui.theme.database
 
 sealed interface PlantEvent {
 
@@ -8,8 +8,6 @@ sealed interface PlantEvent {
     data class setLocation(val location: String): PlantEvent
     data class setCare(val care: String): PlantEvent
     data class deletePlant(val plant: Plant): PlantEvent
-
-
 
 
 }

@@ -16,6 +16,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
+import com.example.plantsaver.ui.theme.database.Plant
+import com.example.plantsaver.ui.theme.database.PlantViewModel
 
 class MainActivity : ComponentActivity() {
     private val plantList = mutableStateListOf<Plant>()
@@ -50,7 +52,7 @@ class MainActivity : ComponentActivity() {
                                 MyPlantsScreen(navController, plantList,nameList)
                             }
                             composable("AddPlantsFragment") {
-                                AddplantsScreennew(navController, plantList,plantViewModel)
+                                AddplantsScreen(navController, plantList,plantViewModel)
                             }
 
                             composable("selectPlantFragment"){
@@ -67,7 +69,8 @@ class MainActivity : ComponentActivity() {
 
 
                             composable("test"){
-                                CarePlanPage(navController)
+
+
                             }
                         }
                     }
