@@ -12,7 +12,10 @@ interface UserDao {
     @Insert
     suspend fun insertUser(user: User)
 
-    @Query("SELECT * FROM users WHERE id = :userId")
-    suspend fun getUserById(userId: Long): User?
+    @Query("SELECT * FROM users WHERE username LIKE :name")
+    suspend fun getUserByName(name: String): User?
+
+    @Query("SELECT * FROM users")
+    suspend fun getUsers(): List<User>
 
 }
