@@ -1,4 +1,6 @@
-package com.example.plantsaver.ui.theme.database
+package com.example.plantsaver.database.event
+
+import com.example.plantsaver.Plant
 
 sealed interface PlantEvent {
 

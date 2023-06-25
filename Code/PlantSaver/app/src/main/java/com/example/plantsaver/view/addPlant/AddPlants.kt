@@ -1,4 +1,4 @@
-package com.example.plantsaver
+package com.example.plantsaver.view.addPlant
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -51,9 +51,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavHostController
+import com.example.plantsaver.Plant
+import com.example.plantsaver.PlantViewModel
+import com.example.plantsaver.R
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import com.example.plantsaver.ui.theme.database.Plant
-import com.example.plantsaver.ui.theme.database.PlantViewModel
 
 
 class AddPlants : ComponentActivity() {

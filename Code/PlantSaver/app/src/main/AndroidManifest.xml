@@ -47,7 +47,7 @@
             android:label="@string/title_activity_plant_fam"
             android:theme="@style/Theme.PlantSaver" />
         <activity
-            android:name=".example"
+            android:name=".view.addPlant.example"
             android:exported="false"
             android:label="@string/title_activity_example"
             android:theme="@style/Theme.PlantSaver" />
@@ -67,22 +67,22 @@
             android:label="@string/title_activity_test"
             android:theme="@style/Theme.PlantSaver" />
         <activity
-            android:name=".AddPlants"
+            android:name=".view.addPlant.AddPlants"
             android:exported="false"
             android:label="@string/title_activity_add_plants"
             android:theme="@style/Theme.PlantSaver" />
         <activity
-            android:name=".MyPlants"
+            android:name=".view.myPlants.MyPlants"
             android:exported="false"
             android:label="@string/title_activity_my_plants"
             android:theme="@style/Theme.PlantSaver" />
         <activity
-            android:name=".homescreen"
+            android:name=".view.home.homescreen"
             android:exported="false"
             android:label="@string/title_activity_homescreen"
             android:theme="@style/Theme.PlantSaver" />
         <activity
-            android:name=".opener"
+            android:name=".view.opener"
             android:exported="false"
             android:label="@string/title_activity_opener"
             android:theme="@style/Theme.PlantSaver" />

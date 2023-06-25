@@ -1,4 +1,4 @@
-package com.example.plantsaver.ui.theme.database
+package com.example.plantsaver.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 
 data class User(
 
-    @PrimaryKey val id: Long,
+    @PrimaryKey
 
     val username: String
 

@@ -1,4 +1,4 @@
-package com.example.plantsaver.ui.theme.database
+package com.example.plantsaver.database.event
 
 sealed interface NameEvent {
 

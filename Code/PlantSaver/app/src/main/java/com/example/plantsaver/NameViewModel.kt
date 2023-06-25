@@ -1,6 +1,8 @@
-package com.example.plantsaver.ui.theme.database
+package com.example.plantsaver
 
 import androidx.lifecycle.ViewModel
+import com.example.plantsaver.database.UserDao
+import com.example.plantsaver.database.event.NameEvent
 
 class NameViewModel(
     private val dao: UserDao

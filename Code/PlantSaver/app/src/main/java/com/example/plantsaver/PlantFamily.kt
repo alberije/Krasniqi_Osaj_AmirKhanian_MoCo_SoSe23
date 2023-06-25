@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import com.example.plantsaver.ui.theme.database.PlantViewModel
+import com.example.plantsaver.view.addPlant.dropDownMenu
 
 class PlantFamily : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

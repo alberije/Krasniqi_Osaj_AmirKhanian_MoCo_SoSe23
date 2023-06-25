@@ -1,6 +1,7 @@
 package com.example.plantsaver
 
 import CreatePlantFamScreen
+import MyPlantsOut
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,9 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.plantsaver.view.addPlant.AddplantsScreen
+import com.example.plantsaver.view.addPlant.CarePlanPage
+import com.example.plantsaver.view.home.Homescreen
+import com.example.plantsaver.view.myPlants.MyPlantsScreen
+import com.example.plantsaver.view.home.Name
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import com.example.plantsaver.ui.theme.database.Plant
-import com.example.plantsaver.ui.theme.database.PlantViewModel
+import com.example.plantsaver.view.OpenerScreen
 
 class MainActivity : ComponentActivity() {
     private val plantList = mutableStateListOf<Plant>()
@@ -69,7 +74,7 @@ class MainActivity : ComponentActivity() {
 
 
                             composable("test"){
-
+                                MyPlantsOut(navController, plantList)
 
                             }
                         }

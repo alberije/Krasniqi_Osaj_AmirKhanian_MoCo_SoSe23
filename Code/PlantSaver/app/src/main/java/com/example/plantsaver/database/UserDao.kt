@@ -1,8 +1,9 @@
-package com.example.plantsaver.ui.theme.database
+package com.example.plantsaver.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.plantsaver.database.model.User
 
 
 @Dao
