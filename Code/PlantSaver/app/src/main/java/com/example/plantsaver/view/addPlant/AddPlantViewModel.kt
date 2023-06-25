@@ -95,7 +95,7 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun addPlantButton() {
-
+        // TODO @jana ist plant familie angeben pflicht?
         if (selectedPlantFamily.value == null) {
             viewModelScope.launch {
                 _eventFlow.emit(UiEvent.ShowToast("Please select or add a plant family first"))
@@ -103,10 +103,11 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
             return
         }
         if (repository.currentUserFlow.value == null) {
-
+            // TODO @jana error
             return
         }
 
+        // TODO @jana if careplan not selected return???
 
         // pflanze zu db hinzufügen
         viewModelScope.launch(Dispatchers.IO) {
@@ -142,6 +143,7 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
     }
 
     private fun plantFamilyFieldChanged(value: String){
+        // TODO @jana suchfunktion udn field updaten
     }
 
     // CreatePlantFam screen
@@ -221,6 +223,7 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
     }
 
     private fun saveCarePlan(){
+        //TODO @ jana muss man einen care plan auswählen oder darf auch ohne?
 
         // die ausgewählten tage in newPlant reinspeichern, dann zurück navigieren
         newPlant.value = newPlant.value.copy(

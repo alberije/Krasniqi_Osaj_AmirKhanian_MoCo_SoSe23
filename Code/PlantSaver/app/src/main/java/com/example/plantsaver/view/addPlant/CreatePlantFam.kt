@@ -1,3 +1,4 @@
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,24 +20,45 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.plantsaver.Plant
+import com.example.plantsaver.database.model.Plant
 import com.example.plantsaver.R
+import com.example.plantsaver.database.model.PlantFamily
+import com.example.plantsaver.view.addPlant.AddPlantEvent
+import com.example.plantsaver.view.addPlant.AddPlantViewModel
+import com.example.plantsaver.view.home.HomeScreenViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant>) {
-    val plant = remember{ mutableStateOf(Plant("","","","")) }
+fun CreatePlantFamScreen(viewModel: AddPlantViewModel, navController: NavHostController) {
+
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when (event) {
+                is AddPlantViewModel.UiEvent.ShowToast -> {
+                    Toast.makeText(context, event.massage, Toast.LENGTH_LONG).show()
+                }
+                is AddPlantViewModel.UiEvent.NavigateUp -> {
+                    navController.navigateUp()
+                }
+            }
+        }
+    }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -49,7 +71,9 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
         ) {
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()) {
-                IconButton(onClick = { navController.navigate("AddPlantsFragment")}) {
+                // TODO benutzt hier lieber navigateUp sonst packt ihr immer neue screens auf den nav stack
+                //  und dann funktioniert der zurück button vom handy nicht mehr zum zurück navigieren
+                IconButton(onClick = { navController.navigateUp()}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.back)
@@ -109,8 +133,10 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
                                     )
 
                                     TextField(
-                                        value = plant.value.name,
-                                        onValueChange = { plant.value = plant.value.copy(name= it) },
+                                        value = viewModel.createPlantFam.value.name,
+                                        onValueChange = { viewModel.onEvent(
+                                            AddPlantEvent.PlantFamNameChanged(it)
+                                        ) },
                                         label = { Text("Enter your plant Name") },
                                         modifier = Modifier.width(230.dp)
 
@@ -129,8 +155,8 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = plant.value.description,
-                                        onValueChange = { plant.value = plant.value.copy(description = it)},
+                                        value = viewModel.createPlantFam.value.description,
+                                        onValueChange = { viewModel.onEvent(AddPlantEvent.PlantFamDescriptionChanged(it))},
                                         label = { Text("Enter your Plant description") },
                                         modifier = Modifier.width(230.dp)
                                     )
@@ -147,8 +173,8 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = plant.value.location,
-                                        onValueChange = { plant.value = plant.value.copy(location = it)},
+                                        value = viewModel.createPlantFam.value.location,
+                                        onValueChange = { viewModel.onEvent(AddPlantEvent.PlantFamLocationChanged(it))},
                                         label = { Text("Enter your Plant location") },
                                         modifier = Modifier.width(230.dp)
                                     )
@@ -166,8 +192,8 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
                                         fontWeight = FontWeight.Bold
                                     )
                                     TextField(
-                                        value = plant.value.care,
-                                        onValueChange = {plant.value = plant.value.copy(care = it) },
+                                        value = viewModel.createPlantFam.value.care,
+                                        onValueChange = {viewModel.onEvent(AddPlantEvent.PlantFamCareChanged(it))},
                                         label = { Text("Enter Plantcare") },
                                         modifier = Modifier.width(230.dp)
                                     )
@@ -183,7 +209,7 @@ fun CreatePlantFamScreen(navController: NavHostController, plantList: List<Plant
                                     horizontalArrangement = Arrangement.Center
                                 ) {
                                     Button(
-                                        onClick = { },
+                                        onClick = { viewModel.onEvent(AddPlantEvent.AddPlantFamilyButton)},
                                         colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
                                         modifier = Modifier
                                             .width(180.dp)
