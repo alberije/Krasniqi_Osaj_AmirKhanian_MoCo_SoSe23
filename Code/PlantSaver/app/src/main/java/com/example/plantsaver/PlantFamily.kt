@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.plantsaver.ui.theme.PlantSaverTheme
+import com.example.plantsaver.view.addPlant.AddPlantViewModel
 import com.example.plantsaver.view.addPlant.dropDownMenu
 
 class PlantFamily : ComponentActivity() {
@@ -56,7 +57,7 @@ class PlantFamily : ComponentActivity() {
 
 
 @Composable
-fun PlantSelectionScreen(navController: NavHostController, plantViewModel: PlantViewModel) {
+fun PlantSelectionScreen(viewModel: AddPlantViewModel, navController: NavHostController) {
 
     Column(
         modifier = Modifier
@@ -90,7 +91,7 @@ fun PlantSelectionScreen(navController: NavHostController, plantViewModel: Plant
 
         Spacer(modifier = Modifier.height(90.dp))
 
-        dropDownMenu(plantViewModel)
+        dropDownMenu(viewModel)
 
         Spacer(modifier = Modifier.height(140.dp))
 

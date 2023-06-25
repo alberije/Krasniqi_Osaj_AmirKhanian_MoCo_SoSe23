@@ -61,7 +61,9 @@ class MyPlants : ComponentActivity() {
 
 
 @Composable
-fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>, nameList: MutableList<Name>) {
+fun MyPlantsScreen(vieModel: MyPlantsViewModel, navController: NavHostController) {
+
+    var plantList = viewModel.plantList.value
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -84,7 +86,7 @@ fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>, nam
             }
 
             Row() {
-                val firstName = nameList.getOrNull(0)?.name ?: "No name"
+                val firstName = viewModel.name.value
                 val myPlantsText = if (firstName.isNotBlank()) {
                     "$firstName's Plants"
                 } else {
@@ -102,7 +104,9 @@ fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>, nam
             }
 
 
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Row(verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth())
+            {
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
 
@@ -137,20 +141,16 @@ fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>, nam
                                     //verticalArrangement = Arrangement.Center
                                 ) {
                                     Text(text = plant.name)
-                                    Text(text = plant.description)
-                                    Text(text = plant.location)
-                                    Text(text = plant.care)
+//                                    Text(text = plant.description)
+//                                    Text(text = plant.location)
+//                                    Text(text = plant.care)
                                 }
                             }
                         }
                     }
                 }
             }
-
-
-
         }
-
     }
 }
 
@@ -158,35 +158,20 @@ fun MyPlantsScreen(navController: NavHostController, plantList: List<Plant>, nam
 
 
 
-    @Composable
-    fun IconAdd(navController: NavHostController) {
-        FloatingActionButton(
-            onClick = { navController.navigate("addPlantsfragment") },
-            contentColor = Color.White,
-            shape = CircleShape,
-            containerColor = Color(0xFF55B663)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Add,
-                contentDescription = "add "
-            )
-        }
+@Composable
+fun IconAdd(navController: NavHostController) {
+    FloatingActionButton(
+        onClick = { navController.navigate("addPlantsfragment") },
+        contentColor = Color.White,
+        shape = CircleShape,
+        containerColor = Color(0xFF55B663)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = "add "
+        )
     }
-
-    @Composable
-    fun IconEdit() {
-        FloatingActionButton(
-            onClick = {},
-            contentColor = Color.White,
-            shape = CircleShape,
-            containerColor = Color(0xFF55B663)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Create,
-                contentDescription = "Edit button"
-            )
-        }
-    }
+}
 
 
 
