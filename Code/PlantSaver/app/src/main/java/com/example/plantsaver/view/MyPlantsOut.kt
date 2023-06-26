@@ -31,12 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.plantsaver.PlantFamily
 import com.example.plantsaver.R
+import com.example.plantsaver.database.model.Plant
 
 @Composable
-fun MyPlantsOut(navController: NavHostController, plantList: MutableList<PlantFamily>) {
-    //val plant = remember{ mutableStateOf(PlantFamily("","","","")) }
+fun MyPlantsOut(navController: NavHostController, plantList: MutableList<Plant>) {
+    val plant = remember{ mutableStateOf(Plant("","","","")) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -260,8 +260,8 @@ fun MyPlantsOut(navController: NavHostController, plantList: MutableList<PlantFa
                                     Box() {
                                         Button(
                                             onClick = {
-                                               // plantList.add(plant.value)
-                                                //plant.value = Plant("","","","")
+                                                plantList.add(plant.value)
+                                                plant.value = Plant("","","","")
                                             },
                                             colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
                                             modifier = Modifier

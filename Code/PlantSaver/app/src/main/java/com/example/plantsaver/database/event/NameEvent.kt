@@ -1,5 +1,6 @@
 package com.example.plantsaver.database.event
 
+
 sealed interface NameEvent {
 
     object SaveName: NameEvent
