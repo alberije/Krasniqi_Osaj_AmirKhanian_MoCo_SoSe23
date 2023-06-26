@@ -7,5 +7,4 @@ class PlantViewmodel(
     private val dao: PlantDao
     ):ViewModel() {
 
-
 }

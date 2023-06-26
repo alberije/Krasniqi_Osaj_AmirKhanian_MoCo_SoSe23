@@ -10,7 +10,7 @@ import com.example.plantsaver.database.model.Plant
 @Dao
 interface PlantDao {
 
-    @Query("SELECT * FROM plant WHERE userName LIKE :userName")
+    @Query("SELECT * FROM plant WHERE userName LIKE :username")
     suspend fun getPlantsForUserName(username:String): List<Plant>
 
     @Insert

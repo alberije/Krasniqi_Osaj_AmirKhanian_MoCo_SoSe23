@@ -36,10 +36,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.plantsaver.Plant
 import com.example.plantsaver.R
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import com.example.plantsaver.view.home.Name
 
 
 class MyPlants : ComponentActivity() {
@@ -61,7 +59,7 @@ class MyPlants : ComponentActivity() {
 
 
 @Composable
-fun MyPlantsScreen(vieModel: MyPlantsViewModel, navController: NavHostController) {
+fun MyPlantsScreen(viewModel: MyPlantsViewModel, navController: NavHostController) {
 
     var plantList = viewModel.plantList.value
 

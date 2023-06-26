@@ -1,6 +1,6 @@
 package com.example.plantsaver.database.event
 
-import com.example.plantsaver.Plant
+import com.example.plantsaver.database.model.Plant
 
 sealed interface PlantEvent {
 
