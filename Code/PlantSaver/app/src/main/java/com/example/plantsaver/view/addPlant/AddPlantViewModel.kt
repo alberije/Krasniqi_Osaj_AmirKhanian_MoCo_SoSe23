@@ -1,7 +1,9 @@
 package com.example.plantsaver.view.addPlant
 
 import android.app.Application
+import android.content.Context
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.plantsaver.database.AppDatabase
@@ -18,13 +20,19 @@ import kotlinx.coroutines.launch
 
 class AddPlantViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = Repository.getRepository(AppDatabase.getDatabase(application))
+    private val repository = Repository.getRepository(AppDatabase.getDatabase(application),application)
 
     val newPlant = mutableStateOf(Plant("", 0, ""))
 
     // ui state add plant screen
     val plantName = mutableStateOf("")
     val selectedPlantFamily = mutableStateOf<PlantFamily?>(null)
+
+    // zum anzeigen der drei bilder
+    val image1 = mutableStateOf<ImageBitmap?>(null)
+    val image2 = mutableStateOf<ImageBitmap?>(null)
+    val image3 = mutableStateOf<ImageBitmap?>(null)
+
     // ui state add plant family screen
     val createPlantFam = mutableStateOf(PlantFamily("","","",""))
     // ui state add care plan screen
@@ -90,8 +98,14 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
         plantName.value = value
     }
 
-    fun addPlantButton() {
+    fun addPlantButton(context: Context) {
 
+        if (plantName.value.isEmpty()) {
+            viewModelScope.launch {
+                _eventFlow.emit(UiEvent.ShowToast("Please enter the name of your plant first"))
+            }
+            return
+        }
         if (selectedPlantFamily.value == null) {
             viewModelScope.launch {
                 _eventFlow.emit(UiEvent.ShowToast("Please select or add a plant family first"))
@@ -104,18 +118,27 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
         }
 
 
-
         // pflanze zu db hinzufügen
         viewModelScope.launch(Dispatchers.IO) {
             // hier noch name, family id und username für die neue pflanze setzen.
             // der care plan wurde schon in newplant gespeichert
-            repository.insertPlant(
+            val newPlantId = repository.insertPlant(
                 newPlant.value.copy(
                     name = plantName.value,
                     plantFamilyId = selectedPlantFamily.value!!.id,
                     userName = repository.currentUserFlow.value!!.username
                 )
             )
+            // fotos speichern
+            if(image1.value != null)
+                repository.saveImage(newPlantId, "1", image1.value!!)
+            if(image2.value != null)
+                repository.saveImage(newPlantId, "2", image2.value!!)
+            if(image3.value != null)
+                repository.saveImage(newPlantId, "3", image3.value!!)
+
+            // plants neu laden inkl thumbnails
+            repository.loadPlantsForUserName(userName.value)
 
             // alle eingaben om add plants screen zurücksetzen
             resetAddPlantScreen()
@@ -132,6 +155,9 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
     private fun resetAddPlantScreen(){
         plantName.value = ""
         selectedPlantFamily.value = null
+        image1.value = null
+        image2.value = null
+        image3.value = null
     }
 
     private fun selectedPlantFamilyChanged(plantFamily: PlantFamily){
@@ -139,6 +165,23 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
     }
 
     private fun plantFamilyFieldChanged(value: String){
+    }
+
+    private fun addPhoto(value: Int, bitmap: ImageBitmap){
+        if(value == 0)
+            return
+        when(value){
+            1 -> {
+                image1.value = bitmap
+            }
+            2 -> {
+                image2.value = bitmap
+            }
+            else -> {
+                image3.value = bitmap
+            }
+        }
+
     }
 
     // CreatePlantFam screen
@@ -249,7 +292,7 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
         when (event) {
             // add plant
             is AddPlantEvent.PlantNameFieldChanged -> plantNameFieldChanged(event.value)
-            AddPlantEvent.AddPlantButton -> addPlantButton()
+            is AddPlantEvent.AddPlantButton -> addPlantButton(event.context)
             is AddPlantEvent.SelectedPlantFamilyChanged -> selectedPlantFamilyChanged(event.value)
             is AddPlantEvent.PlantFamilyFieldChanged -> plantFamilyFieldChanged(event.value)
             // create plant fam
