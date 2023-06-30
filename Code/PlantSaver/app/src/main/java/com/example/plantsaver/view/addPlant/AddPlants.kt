@@ -77,6 +77,7 @@ import androidx.navigation.NavHostController
 import com.example.plantsaver.R
 import com.example.plantsaver.database.model.PlantFamily
 import com.example.plantsaver.ui.theme.PlantSaverTheme
+import com.example.plantsaver.view.ImageBox
 import kotlinx.coroutines.flow.collectLatest
 import java.io.File
 

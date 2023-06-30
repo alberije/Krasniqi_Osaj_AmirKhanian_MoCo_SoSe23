@@ -18,5 +18,18 @@ data class Plant(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0
 ){
-
+    fun carePlanToString(): String{
+        var string = ""
+        if(mon) string += "Mon, "
+        if(mon) string += "Tue, "
+        if(mon) string += "Wed, "
+        if(mon) string += "Thu, "
+        if(mon) string += "Fri, "
+        if(mon) string += "Sat, "
+        if(mon) string += "Sun, "
+        if(string.isEmpty())
+            return "No Care Plan"
+        string += "\b"
+        return string
+    }
 }
