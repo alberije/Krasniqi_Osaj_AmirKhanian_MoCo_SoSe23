@@ -1,9 +1,19 @@
 package com.example.plantsaver.view.addPlant
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +25,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -49,6 +60,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -57,11 +71,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.navigation.NavHostController
 import com.example.plantsaver.R
 import com.example.plantsaver.database.model.PlantFamily
 import com.example.plantsaver.ui.theme.PlantSaverTheme
 import kotlinx.coroutines.flow.collectLatest
+import java.io.File
 
 
 class AddPlants : ComponentActivity() {
@@ -188,7 +205,7 @@ fun AddplantsScreen(viewModel: AddPlantViewModel, navController: NavHostControll
                                             .width(230.dp)
                                             .clip(RoundedCornerShape(8.dp))
                                             .background(Color.White),
-                                        // TODO hier colors setzen
+
                                         colors = TextFieldDefaults.textFieldColors(
                                             containerColor = Color.White,
                                             unfocusedIndicatorColor = Color.White,
@@ -276,65 +293,11 @@ fun AddplantsScreen(viewModel: AddPlantViewModel, navController: NavHostControll
                                     )
 
                                 }
+
                                 Spacer(modifier = Modifier.height(40.dp))
 
+                                ImagesAddPlants(viewModel)
 
-
-                                Column() {
-                                    Row() {
-                                        Box(
-                                            modifier = Modifier
-                                                .width(90.dp)
-                                                .height(90.dp)
-                                                .shadow(4.dp, RoundedCornerShape(9.dp))
-                                                .background(
-                                                    Color.White,
-                                                    RoundedCornerShape(9.dp)
-                                                )
-                                                .clickable() {},
-                                            contentAlignment = Alignment.Center
-                                        ) {
-                                            Text(text = "Week 1")
-                                        }
-                                        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
-                                        Row() {
-                                            Box(
-                                                modifier = Modifier
-                                                    .width(90.dp)
-                                                    .height(90.dp)
-                                                    .shadow(4.dp, RoundedCornerShape(9.dp))
-                                                    .background(
-                                                        Color.White,
-                                                        RoundedCornerShape(9.dp)
-                                                    )
-                                                    .clickable() {},
-                                                contentAlignment = Alignment.Center
-                                            ) {
-                                                Text(text = "Week 2")
-                                            }
-                                            Spacer(modifier = Modifier.padding(horizontal = 8.dp))
-                                            Row() {
-                                                Box(
-                                                    modifier = Modifier
-                                                        .width(90.dp)
-                                                        .height(90.dp)
-                                                        .shadow(4.dp, RoundedCornerShape(9.dp))
-                                                        .background(
-                                                            Color.White,
-                                                            RoundedCornerShape(9.dp)
-                                                        )
-                                                        .clickable() {},
-                                                    contentAlignment = Alignment.Center
-                                                ) {
-                                                    Text(text = "Week 3")
-                                                }
-                                            }
-
-
-                                        }
-
-                                    }
-                                }
                                 Spacer(modifier = Modifier.padding(vertical = 20.dp))
 
                                 Row() {
@@ -385,7 +348,7 @@ fun dropDownMenu(viewModel: AddPlantViewModel) {
     Column(modifier = Modifier.padding(vertical = 20.dp)) {
 
         TextField(
-            value = viewModel.selectedPlantFamily.value?.name ?: "", // TODO @jana hier muss ich noch mit der suchfunktion undso schauen
+            value = viewModel.selectedPlantFamily.value?.name ?: "",
             onValueChange = { viewModel.onEvent(AddPlantEvent.PlantFamilyFieldChanged(it)) },
             modifier = Modifier
                 .width(230.dp)
@@ -424,6 +387,154 @@ fun dropDownMenu(viewModel: AddPlantViewModel) {
 
 
 }
+
+@Composable
+fun ImagesAddPlants(viewModel: AddPlantViewModel) {
+
+    val context = LocalContext.current
+
+    var imageUri by remember {
+        mutableStateOf<Uri?>(null)
+    }
+    var imageNumber by remember {
+        mutableStateOf(0)
+    }
+
+    var tempBitmap = remember<ImageBitmap?> { null }
+    rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) {
+       if (it) {
+           //photo in Uri
+           //zu bitmap formairen
+           val newBitmap =
+               if (Build.VERSION.SDK_INT < 28) {
+                   MediaStore.Images.Media.getBitmap(context.contentResolver, imageUri).asImageBitmap()
+
+               }else {
+
+                   val source = ImageDecoder.createSource(context.contentResolver, imageUri)
+                   ImageDecoder.decodeBitmap(source).asImageBitmap()
+               }
+
+           //resize image
+           val inputRatio = newBitmap.width.toFloat() / newBitmap.height.toFloat()
+           val smallerSide = 860
+           val resizeWidth: Int
+           val resizeHeight: Int
+           if (newBitmap.width < newBitmap.height) {
+
+               //portrait - ratio <1
+               resizeWidth = smallerSide
+               resizeHeight = (resizeWidth/inputRatio).toInt()
+
+           } else {
+
+               // landscape - ratio >= 1
+               resizeHeight = smallerSide
+               resizeWidth = (inputRatio * resizeHeight).toInt()
+           }
+
+
+           // Resize the image to the desired resolution
+           tempBitmap = Bitmap.createScaledBitmap(newBitmap.asAndroidBitmap(), resizeWidth, resizeHeight, true).asImageBitmap()
+
+
+           viewModel.onEvent(AddPlantEvent.AddPhoto(imageNumber, tempBitmap!!))
+       }
+    }
+
+val permissionLauncher = rememberLauncherForActivityResult(
+    ActivityResultContracts.RequestPermission()
+) {
+    if (it) {
+        Toast.makeText(context, "Permission Granted ", Toast.LENGTH_SHORT).show()
+        cameraLauncher.launch(imageUri)
+        }else {
+
+        Toast.makeText(context, "Permission Denied", Toast.LENGTH_SHORT).show()
+
+
+    }
+}
+
+val getImage: (number:Int) -> Unit = {
+
+    imageNumber = it
+
+    imageUri = ComposeFileProvider.getImageUri(context)
+
+    val permissionCheckResult =
+        ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+    if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
+        cameraLauncher.launch(imageUri)
+    } else {
+        // Request a permission
+        permissionLauncher.launch(Manifest.permission.CAMERA)
+    }
+
+}
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        ImageBox(
+            modifier = Modifier
+                .size(90.dp)
+                .clickable { getImage(1) },
+            bitmap = viewModel.image1.value,
+            text = "Add Photo"
+        )
+    }
+}
+
+class ComposeFileProvide : FileProvider(
+    R.xml.filepaths
+) {
+    companion object {
+        fun getImageUri(context: Context): Uri {
+        val directory = File(context.cacheDir, "images")
+        directory.mkdirs()
+        val file = File.createTempFile(
+            "selectede_image_",
+            ".jpg",
+            directory,
+        )
+            val authority = BuildConfig.APPLICATION_ID + ".provider"
+        return getUriForFile(
+        context,
+        authority,
+        file,
+
+        )
+
+    }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
