@@ -82,7 +82,7 @@
             android:label="@string/title_activity_homescreen"
             android:theme="@style/Theme.PlantSaver" />
         <activity
-            android:name=".view.opener"
+            android:name=".opener"
             android:exported="false"
             android:label="@string/title_activity_opener"
             android:theme="@style/Theme.PlantSaver" />

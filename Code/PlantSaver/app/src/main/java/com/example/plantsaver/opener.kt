@@ -1,4 +1,4 @@
-package com.example.plantsaver.view
+package com.example.plantsaver
 
 import android.os.Bundle
 import android.widget.Toast

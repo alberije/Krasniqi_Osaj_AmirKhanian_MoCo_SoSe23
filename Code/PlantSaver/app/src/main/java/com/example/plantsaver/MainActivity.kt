@@ -20,7 +20,6 @@ import com.example.plantsaver.view.addPlant.CarePlanPage
 import com.example.plantsaver.view.home.Homescreen
 import com.example.plantsaver.view.myPlants.MyPlantsScreen
 import com.example.plantsaver.ui.theme.PlantSaverTheme
-import com.example.plantsaver.view.OpenerScreen
 import com.example.plantsaver.view.addPlant.AddPlantViewModel
 import com.example.plantsaver.view.home.HomeScreenViewModel
 import com.example.plantsaver.view.myPlants.MyPlantsViewModel
