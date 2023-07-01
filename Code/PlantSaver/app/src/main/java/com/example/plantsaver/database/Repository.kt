@@ -104,9 +104,9 @@ class Repository(private val db: AppDatabase, private val context: Context) {
 
 
     // plant
-    suspend fun insertPlant(plant: Plant): Long {
+    suspend fun insertPlant(plant: Plant){
         val newId = db.plantDao.insertPlant(plant)
-//        _currentUserFlow.value?.let { loadPlantsForUserName(it.username) }
+        //_currentUserFlow.value?.let { loadPlantsForUserName(it.username) }
         return newId
     }
 

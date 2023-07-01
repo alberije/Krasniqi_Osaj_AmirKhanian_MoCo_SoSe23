@@ -74,6 +74,7 @@ import androidx.compose.ui.unit.toSize
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.navigation.NavHostController
+import com.example.plantsaver.BuildConfig
 import com.example.plantsaver.R
 import com.example.plantsaver.database.model.PlantFamily
 import com.example.plantsaver.ui.theme.PlantSaverTheme
@@ -402,7 +403,7 @@ fun ImagesAddPlants(viewModel: AddPlantViewModel) {
     }
 
     var tempBitmap = remember<ImageBitmap?> { null }
-    rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) {
+    val cameraLauncher = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) {
        if (it) {
            //photo in Uri
            //zu bitmap formairen
@@ -487,7 +488,8 @@ val getImage: (number:Int) -> Unit = {
     }
 }
 
-class ComposeFileProvide : FileProvider(
+
+class ComposeFileProvider : FileProvider(
     R.xml.filepaths
 ) {
     companion object {
