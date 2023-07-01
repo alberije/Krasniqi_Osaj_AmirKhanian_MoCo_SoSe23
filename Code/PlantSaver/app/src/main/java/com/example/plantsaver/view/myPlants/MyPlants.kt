@@ -122,20 +122,15 @@ fun MyPlantsScreen(viewModel: MyPlantsViewModel, navController: NavHostControlle
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Box(modifier = Modifier.fillMaxWidth()) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-
-
-                            Spacer(modifier = Modifier.width(35.dp))
-
-                            IconAdd(navController = navController)
-                        }
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        IconAdd(navController = navController)
                     }
                 }
             }
+
             item {
                 PlantGrid(
                     viewModel.plantList.value,
