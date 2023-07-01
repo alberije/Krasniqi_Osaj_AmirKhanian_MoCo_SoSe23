@@ -295,6 +295,7 @@ class AddPlantViewModel(application: Application) : AndroidViewModel(application
             is AddPlantEvent.AddPlantButton -> addPlantButton(event.context)
             is AddPlantEvent.SelectedPlantFamilyChanged -> selectedPlantFamilyChanged(event.value)
             is AddPlantEvent.PlantFamilyFieldChanged -> plantFamilyFieldChanged(event.value)
+            is AddPlantEvent.AddPhoto -> addPhoto(event.value, event.bitmap)
             // create plant fam
             AddPlantEvent.AddPlantFamilyButton -> addPlantFamily()
             is AddPlantEvent.PlantFamNameChanged -> plantFamNameChanged(event.value)

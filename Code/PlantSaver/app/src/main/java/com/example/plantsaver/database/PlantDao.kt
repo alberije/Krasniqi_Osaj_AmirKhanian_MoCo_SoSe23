@@ -14,7 +14,7 @@ interface PlantDao {
     suspend fun getPlantsForUserName(username:String): List<Plant>
 
     @Insert
-    suspend fun insertPlant(plant: Plant)
+    suspend fun insertPlant(plant: Plant): Long
 
     @Delete
     fun deletePlant(plant: Plant)

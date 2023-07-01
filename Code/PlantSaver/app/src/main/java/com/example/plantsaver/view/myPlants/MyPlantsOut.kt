@@ -56,6 +56,7 @@ import com.example.plantsaver.view.myPlants.MyPlantsEvent
 import com.example.plantsaver.view.myPlants.MyPlantsViewModel
 import kotlinx.coroutines.flow.collectLatest
 import com.example.plantsaver.view.ImageBox
+import com.example.plantsaver.view.addPlant.ComposeFileProvider
 
 @Composable
 fun MyPlantsOut(viewModel: MyPlantsViewModel, navController: NavHostController) {
@@ -249,7 +250,7 @@ fun Images(modifier: Modifier, viewModel: MyPlantsViewModel) {
 
         imageNumber = it
 
-
+        imageUri = ComposeFileProvider.getImageUri(context)
 
         val permissionCheckResult =
             ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)

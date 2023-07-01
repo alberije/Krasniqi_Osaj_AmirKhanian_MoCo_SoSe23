@@ -35,7 +35,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
@@ -43,7 +42,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -305,7 +303,7 @@ fun AddplantsScreen(viewModel: AddPlantViewModel, navController: NavHostControll
                                     Box() {
                                         Button(
                                             onClick = {
-                                                viewModel.onEvent(AddPlantEvent.AddPlantButton)
+                                                viewModel.onEvent(AddPlantEvent.AddPlantButton(context))
                                             },
                                             colors = ButtonDefaults.buttonColors(Color(0xFF2d681c)),
                                             modifier = Modifier
@@ -412,7 +410,7 @@ fun ImagesAddPlants(viewModel: AddPlantViewModel) {
 
                }else {
 
-                   val source = ImageDecoder.createSource(context.contentResolver, imageUri)
+                   val source = ImageDecoder.createSource(context.contentResolver, imageUri!!)
                    ImageDecoder.decodeBitmap(source).asImageBitmap()
                }
 

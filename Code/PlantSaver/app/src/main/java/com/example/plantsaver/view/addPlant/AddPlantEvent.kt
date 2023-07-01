@@ -1,5 +1,6 @@
 package com.example.plantsaver.view.addPlant
 
+import android.content.Context
 import androidx.compose.ui.graphics.ImageBitmap
 import com.example.plantsaver.database.model.PlantFamily
 
@@ -10,7 +11,7 @@ sealed class AddPlantEvent{
     data class PlantNameFieldChanged(val value: String): AddPlantEvent()
     data class PlantFamilyFieldChanged(val value: String): AddPlantEvent()
     data class SelectedPlantFamilyChanged(val value: PlantFamily): AddPlantEvent()
-    object AddPlantButton: AddPlantEvent()
+    data class AddPlantButton(val context: Context): AddPlantEvent()
     // create plant fam
     object AddPlantFamilyButton: AddPlantEvent()
     data class PlantFamNameChanged(val value: String): AddPlantEvent()

@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class HomeScreenViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = Repository.getRepository(AppDatabase.getDatabase(application))
+    private val repository = Repository.getRepository(AppDatabase.getDatabase(application), application)
 
     // ui state
     val name = mutableStateOf("")

@@ -20,6 +20,7 @@ import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+import kotlin.NullPointerException
 
 class Repository(private val db: AppDatabase, private val context: Context) {
     // dieser Flow enthält einen user und kann immer wieder aktualisiert werden
@@ -104,7 +105,7 @@ class Repository(private val db: AppDatabase, private val context: Context) {
 
 
     // plant
-    suspend fun insertPlant(plant: Plant){
+    suspend fun insertPlant(plant: Plant): Long{
         val newId = db.plantDao.insertPlant(plant)
         //_currentUserFlow.value?.let { loadPlantsForUserName(it.username) }
         return newId
