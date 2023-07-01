@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.plantsaver.R
 import com.example.plantsaver.ui.theme.PlantSaverTheme
 import com.example.plantsaver.view.home.HomeScreenViewModel
 import kotlinx.coroutines.delay

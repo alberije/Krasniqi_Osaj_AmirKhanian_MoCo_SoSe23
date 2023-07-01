@@ -1,10 +1,12 @@
 package com.example.plantsaver.view.addPlant
 
+import androidx.compose.ui.graphics.ImageBitmap
 import com.example.plantsaver.database.model.PlantFamily
 
 sealed class AddPlantEvent{
 
     // add plant
+    data class AddPhoto(val value: Int, val bitmap: ImageBitmap): AddPlantEvent()
     data class PlantNameFieldChanged(val value: String): AddPlantEvent()
     data class PlantFamilyFieldChanged(val value: String): AddPlantEvent()
     data class SelectedPlantFamilyChanged(val value: PlantFamily): AddPlantEvent()

@@ -21,8 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,12 +31,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.plantsaver.database.model.Plant
 import com.example.plantsaver.R
-import com.example.plantsaver.database.model.PlantFamily
 import com.example.plantsaver.view.addPlant.AddPlantEvent
 import com.example.plantsaver.view.addPlant.AddPlantViewModel
-import com.example.plantsaver.view.home.HomeScreenViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -10,7 +10,6 @@ import com.example.plantsaver.database.AppDatabase
 import com.example.plantsaver.database.Repository
 import com.example.plantsaver.database.model.Plant
 import com.example.plantsaver.database.model.PlantFamily
-import com.example.plantsaver.view.addPlant.AddPlantEvent.AddPlantButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
