@@ -1,6 +1,7 @@
 package com.example.plantsaver
 
 import CreatePlantFamScreen
+import MyPlantsOut
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -76,6 +77,9 @@ class MainActivity : ComponentActivity() {
                                 CreatePlantFamScreen(addPlantViewModel,navController)
                             }
 
+                            composable("myplantsout"){
+                                MyPlantsOut(myPlantsViewModel, navController)
+                            }
 
                             composable("test"){
 

@@ -66,8 +66,7 @@ fun CreatePlantFamScreen(viewModel: AddPlantViewModel, navController: NavHostCon
         ) {
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()) {
-                // TODO benutzt hier lieber navigateUp sonst packt ihr immer neue screens auf den nav stack
-                //  und dann funktioniert der zurück button vom handy nicht mehr zum zurück navigieren
+
                 IconButton(onClick = { navController.navigateUp()}) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
