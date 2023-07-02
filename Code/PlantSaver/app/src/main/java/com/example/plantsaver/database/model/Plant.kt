@@ -21,12 +21,12 @@ data class Plant(
     fun carePlanToString(): String{
         var string = ""
         if(mon) string += "Mon, "
-        if(mon) string += "Tue, "
-        if(mon) string += "Wed, "
-        if(mon) string += "Thu, "
-        if(mon) string += "Fri, "
-        if(mon) string += "Sat, "
-        if(mon) string += "Sun, "
+        if(tue) string += "Tue, "
+        if(wed) string += "Wed, "
+        if(thu) string += "Thu, "
+        if(fri) string += "Fri, "
+        if(sat) string += "Sat, "
+        if(sun) string += "Sun, "
         if(string.isEmpty())
             return "No Care Plan"
         string += "\b"

@@ -89,10 +89,6 @@ class Repository(private val db: AppDatabase, private val context: Context) {
         db.userDao.insertUser(user)
     }
 
-    suspend fun getUserByName(name: String): User?{
-        return db.userDao.getUserByName(name)
-    }
-
     suspend fun getUsers(): List<User>{
         return db.userDao.getUsers()
     }

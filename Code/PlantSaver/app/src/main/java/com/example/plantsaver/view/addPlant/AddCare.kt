@@ -1,9 +1,6 @@
 package com.example.plantsaver.view.addPlant
 
-import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,8 +17,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,25 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.plantsaver.R
-import com.example.plantsaver.ui.theme.PlantSaverTheme
 import kotlinx.coroutines.flow.collectLatest
-
-class example : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            PlantSaverTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-
-                }
-            }
-        }
-    }
-}
 
 
 @Composable
@@ -112,14 +89,6 @@ fun CarePlanPage(viewModel: AddPlantViewModel, navController: NavHostController)
             modifier = Modifier.padding(vertical = 30.dp)
         )
 
-
-        var mondayChecked by remember { mutableStateOf(false) }
-        var tuesdayChecked by remember { mutableStateOf(false) }
-        var wednesdayChecked by remember { mutableStateOf(false) }
-        var thursdayChecked by remember { mutableStateOf(false) }
-        var fridayChecked by remember { mutableStateOf(false) }
-        var saturdayChecked by remember { mutableStateOf(false) }
-        var sundayChecked by remember { mutableStateOf(false) }
 
         WeekDay("Monday", viewModel.mondayChecked.value) { viewModel.onEvent(AddPlantEvent.DayChecked(it, 1)) }
         WeekDay("Tuesday", viewModel.tuesdayChecked.value) { viewModel.onEvent(AddPlantEvent.DayChecked(it, 2)) }

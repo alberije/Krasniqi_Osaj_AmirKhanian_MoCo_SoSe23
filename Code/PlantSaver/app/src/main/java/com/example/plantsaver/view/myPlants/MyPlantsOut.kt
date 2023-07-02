@@ -61,7 +61,6 @@ import com.example.plantsaver.view.addPlant.ComposeFileProvider
 @Composable
 fun MyPlantsOut(viewModel: MyPlantsViewModel, navController: NavHostController) {
     val plant = viewModel.currentPlant
-    val plantFamily = viewModel.currentPlantFamily
 
     val context = LocalContext.current
 
